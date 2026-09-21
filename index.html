@@ -3,221 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acidburn0x90 // Homelab & Tech Tinkering</title>
-  <meta name="description" content="Personal tech landing page, homelab servers, and amateur programming experiments.">
+  <title>acidburn0x90 // homelab & code</title>
+  <meta name="description" content="Personal homelab status and directory of amateur programming projects.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <main class="site-wrapper">
-    <!-- Terminal Header Window -->
-    <header class="terminal-header">
-      <div class="window-bar">
-        <div class="window-controls">
-          <span class="window-dot dot-red"></span>
-          <span class="window-dot dot-yellow"></span>
-          <span class="window-dot dot-green"></span>
-        </div>
-        <div>acidburn@arch: ~</div>
-        <div style="opacity: 0.5;">bash</div>
+  <div class="site-wrapper">
+    <!-- Top Skeletal Header Bar -->
+    <header class="skeletal-bar">
+      <div class="brand-identity">
+        <span class="brand-dot"></span>
+        <span class="brand-title">acidburn0x90</span>
+        <span class="brand-sub">// homelab & code</span>
       </div>
-
-      <div class="header-content">
-        <h1 class="site-title">acidburn0x90 // lab</h1>
-        <p style="color: var(--text-dim); font-size: 13px;">
-          Personal directory for my self-hosted homelab server, coding projects, and random technical tinkering.
-        </p>
-
-        <!-- Prominent Disclaimer -->
-        <div class="disclaimer-banner">
-          <div>⚠️</div>
-          <div>
-            <strong>Disclaimer:</strong> I am an amateur at best. The projects and tools listed here are not all 100% original creations—many are forks, hobby experiments, university exercises, modding sandboxes, or messy scripts put together to learn how things work.
-          </div>
-        </div>
-
-        <nav class="nav-shortcuts" aria-label="Page navigation">
-          <a href="#status-section" class="nav-link">01 // MINECRAFT SERVER</a>
-          <a href="#projects-section" class="nav-link">02 // PROJECTS DIRECTORY</a>
-          <a href="https://github.com/Acidburn0x90" target="_blank" rel="noopener noreferrer" class="nav-link">03 // GITHUB PROFILE ↗</a>
-        </nav>
-      </div>
+      <nav class="nav-group" aria-label="Quick links">
+        <a href="#server-widget" class="nav-btn">server</a>
+        <a href="#projects-grid" class="nav-btn">projects</a>
+        <a href="https://github.com/Acidburn0x90" target="_blank" rel="noopener noreferrer" class="nav-btn">github ↗</a>
+      </nav>
     </header>
 
-    <!-- Section 1: Live Homelab Server -->
-    <section id="status-section" aria-labelledby="server-heading">
-      <div class="section-header">
-        <span id="server-heading" class="section-label">01 // Homelab Server</span>
-        <span class="section-count">Paper 1.21.x Crossplay</span>
+    <!-- Disclaimer Banner (Concise Skeletal Callout) -->
+    <div class="skeletal-disclaimer">
+      <span class="disclaimer-label">Note</span>
+      <span>Amateur at best. Projects here are hobby experiments, forks, and casual learning builds—not original enterprise software.</span>
+    </div>
+
+    <!-- Section 1: Homelab Server (Skeletal Panel) -->
+    <section id="server-widget" class="section-shell" aria-labelledby="server-title">
+      <div class="section-head">
+        <span id="server-title" class="section-tag">Homelab Server</span>
+        <span class="section-meta">Arch Linux Node</span>
       </div>
 
-      <div class="server-box">
-        <div class="server-top">
-          <div>
-            <h2 class="server-name">BigBois Minecraft Server</h2>
-            <div id="motdText" style="font-size: 12px; color: var(--text-dim); margin-top: 4px;">Pinging host...</div>
-          </div>
-          <div id="statusBadge" class="status-pill offline">
-            <span class="status-indicator"></span>
-            <span id="statusText">CHECKING...</span>
+      <div class="skeletal-panel">
+        <div class="panel-header">
+          <div class="panel-title">BigBois Minecraft (Paper 1.21.x)</div>
+          <div id="statusBadge" class="status-chip offline">
+            <span class="chip-dot"></span>
+            <span id="statusText">CHECKING</span>
           </div>
         </div>
 
-        <!-- Telemetry Data -->
-        <div class="telemetry-row">
-          <div class="telemetry-item">
-            <div class="telemetry-key">Players</div>
-            <div id="playerCount" class="telemetry-val">-- / --</div>
+        <!-- 4-Cell Skeletal Grid -->
+        <div class="skeletal-grid-4">
+          <div class="metric-cell">
+            <span class="metric-label">Players</span>
+            <span id="playerCount" class="metric-value">-- / --</span>
           </div>
-          <div class="telemetry-item">
-            <div class="telemetry-key">Version</div>
-            <div id="serverVersion" class="telemetry-val">1.21.x</div>
+          <div class="metric-cell">
+            <span class="metric-label">Version</span>
+            <span id="serverVersion" class="metric-value">Paper 1.21.x</span>
           </div>
-          <div class="telemetry-item">
-            <div class="telemetry-key">Crossplay</div>
-            <div class="telemetry-val" style="color: var(--accent);">Java + Bedrock</div>
+          <div class="metric-cell">
+            <span class="metric-label">Crossplay</span>
+            <span class="metric-value">Java + Bedrock</span>
           </div>
-          <div class="telemetry-item">
-            <div class="telemetry-key">Host</div>
-            <div class="telemetry-val">Arch Linux</div>
+          <div class="metric-cell">
+            <span class="metric-label">Port</span>
+            <span class="metric-value">58141 SRV</span>
           </div>
         </div>
 
         <!-- Direct Join Endpoints -->
-        <div class="endpoints-list">
-          <!-- Java -->
-          <button type="button" class="endpoint-btn" onclick="copyAddress('mc.bigbois.live', 'javaHint')" title="Click to copy Java address">
+        <div class="endpoint-row">
+          <div class="endpoint-card" onclick="copyAddress('mc.bigbois.live', 'javaPill')" title="Click to copy Java address">
             <div>
-              <span class="endpoint-type">PC / Mac / Linux (Java)</span>
-              <span class="endpoint-addr">mc.bigbois.live</span>
+              <span class="endpoint-sub">Java Edition (PC / Mac)</span>
+              <span class="endpoint-text">mc.bigbois.live</span>
             </div>
-            <span id="javaHint" class="copy-badge">COPY</span>
-          </button>
+            <span id="javaPill" class="copy-pill">COPY</span>
+          </div>
 
-          <!-- Bedrock -->
-          <button type="button" class="endpoint-btn" onclick="copyAddress('mcb.bigbois.live:19132', 'bedrockHint')" title="Click to copy Bedrock address">
+          <div class="endpoint-card" onclick="copyAddress('mcb.bigbois.live:19132', 'bedrockPill')" title="Click to copy Bedrock address">
             <div>
-              <span class="endpoint-type">Mobile / Win10 / Consoles (Bedrock)</span>
-              <span class="endpoint-addr">mcb.bigbois.live:19132</span>
+              <span class="endpoint-sub">Bedrock Edition (Mobile / Win10 / Console)</span>
+              <span class="endpoint-text">mcb.bigbois.live:19132</span>
             </div>
-            <span id="bedrockHint" class="copy-badge">COPY</span>
-          </button>
+            <span id="bedrockPill" class="copy-pill">COPY</span>
+          </div>
         </div>
 
         <!-- Collapsible Mini Guide -->
-        <details class="mini-guide">
-          <summary>+ Connection notes for consoles & devices</summary>
+        <details class="skeletal-details">
+          <summary>Console & Client Connection Details</summary>
           <ul>
-            <li><strong>Java:</strong> Multiplayer → Add Server → <code>mc.bigbois.live</code> (SRV handles custom port automatically).</li>
-            <li><strong>Bedrock (Phones/Win10):</strong> Play → Servers → Add Server → Address: <code>mcb.bigbois.live</code> | Port: <code>19132</code>.</li>
-            <li><strong>Consoles (Xbox, PlayStation, Switch):</strong> Use the <em>BedrockTogether</em> mobile app on local Wi-Fi to redirect console LAN connections to this server.</li>
+            <li><strong>Java:</strong> Multiplayer → Add Server → <code>mc.bigbois.live</code> (SRV automatic port resolution).</li>
+            <li><strong>Bedrock:</strong> Play → Servers → Add Server → Address: <code>mcb.bigbois.live</code> | Port: <code>19132</code>.</li>
+            <li><strong>Consoles:</strong> Use the free <em>BedrockTogether</em> mobile app on your local Wi-Fi to redirect console LAN discovery.</li>
           </ul>
         </details>
       </div>
     </section>
 
-    <!-- Section 2: Projects & Scripts Directory -->
-    <section id="projects-section" aria-labelledby="projects-heading">
-      <div class="section-header">
-        <span id="projects-heading" class="section-label">02 // Projects & Experiments Directory</span>
-        <span id="projectCountBadge" class="section-count">10 items</span>
+    <!-- Section 2: Projects Directory (Skeletal Grid) -->
+    <section id="projects-grid" class="section-shell" aria-labelledby="directory-title">
+      <div class="section-head">
+        <span id="directory-title" class="section-tag">Project Directory</span>
+        <span id="countBadge" class="section-meta">10 entries</span>
       </div>
 
-      <div class="filter-bar">
-        <input type="text" id="searchInput" class="search-input" placeholder="Search experiments, tools, tags... (e.g. java, python, mud)" oninput="filterList()">
+      <div class="controls-bar">
+        <input type="text" id="searchInput" class="skeletal-search" placeholder="Filter projects by title, stack, or tag..." oninput="filterCards()">
         
-        <div class="category-tags">
-          <button type="button" class="cat-btn active" data-category="all" onclick="selectCategory('all')">ALL</button>
-          <button type="button" class="cat-btn" data-category="infra" onclick="selectCategory('infra')">HOMELAB</button>
-          <button type="button" class="cat-btn" data-category="systems" onclick="selectCategory('systems')">GAMES & CODE</button>
-          <button type="button" class="cat-btn" data-category="security" onclick="selectCategory('security')">SECURITY & TOOLS</button>
-          <button type="button" class="cat-btn" data-category="simulations" onclick="selectCategory('simulations')">EXPERIMENTS & MATH</button>
+        <div class="tab-list">
+          <button type="button" class="tab-btn active" data-category="all" onclick="setCategory('all')">ALL</button>
+          <button type="button" class="tab-btn" data-category="infra" onclick="setCategory('infra')">HOMELAB</button>
+          <button type="button" class="tab-btn" data-category="systems" onclick="setCategory('systems')">GAMES</button>
+          <button type="button" class="tab-btn" data-category="security" onclick="setCategory('security')">SECURITY</button>
+          <button type="button" class="tab-btn" data-category="simulations" onclick="setCategory('simulations')">EXPERIMENTS</button>
         </div>
       </div>
 
-      <!-- Projects Container -->
-      <div id="projectList" class="project-list">
-        <!-- Rendered dynamically from projects.js -->
+      <!-- Render Target Cards Grid -->
+      <div id="cardsGrid" class="cards-grid">
+        <!-- Injected from projects.js -->
       </div>
     </section>
 
-    <!-- Minimalist Footer -->
-    <footer class="terminal-footer">
-      <div>bigbois.live // amateur homelab & code</div>
-      <div>
-        <a href="#status-section">^ top</a>
-      </div>
+    <!-- Footer -->
+    <footer class="skeletal-footer">
+      <div>bigbois.live // charcoal monotone</div>
+      <a href="#server-widget">^ top</a>
     </footer>
-  </main>
+  </div>
 
-  <!-- Data Script -->
+  <!-- Data Store -->
   <script src="projects.js"></script>
 
-  <!-- Frontend Logic -->
+  <!-- Client Script -->
   <script>
-    let currentCategory = 'all';
+    let activeFilter = 'all';
 
-    function renderList(items) {
-      const container = document.getElementById('projectList');
-      const counter = document.getElementById('projectCountBadge');
+    function renderCards(items) {
+      const container = document.getElementById('cardsGrid');
+      const counter = document.getElementById('countBadge');
 
       if (!items || items.length === 0) {
         container.innerHTML = `
-          <div class="empty-notice">
-            No matching items found for your filter.
+          <div class="empty-box">
+            No entries matching your filter.
           </div>
         `;
-        counter.textContent = '0 items';
+        counter.textContent = '0 entries';
         return;
       }
 
-      counter.textContent = `${items.length} ${items.length === 1 ? 'item' : 'items'}`;
+      counter.textContent = `${items.length} ${items.length === 1 ? 'entry' : 'entries'}`;
 
       container.innerHTML = items.map(item => {
-        const tagSpans = item.tags.map(t => `<span class="tag">#${t}</span>`).join('');
+        const chips = item.tags.map(t => `<span class="chip">${t}</span>`).join('');
         const links = item.links.map(l => `
-          <a href="${l.url}" ${l.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="action-link">
-            <span>${l.label.toUpperCase()}</span>
-            <span>↗</span>
+          <a href="${l.url}" ${l.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="card-action-btn">
+            ${l.label} ↗
           </a>
         `).join('');
 
         return `
-          <article class="project-item" id="item-${item.id}">
-            <div class="item-top">
-              <div class="item-title-wrap">
-                <span>${item.icon || '•'}</span>
-                <h3 class="item-title">${item.title}</h3>
-              </div>
-              <span class="item-badge">${item.categoryLabel || item.category}</span>
+          <article class="card-frame" id="card-${item.id}">
+            <div class="card-headline">
+              <span class="card-name">${item.title}</span>
+              <span class="card-category-badge">${item.categoryLabel || item.category}</span>
             </div>
-            <p class="item-desc">${item.description}</p>
-            <div class="item-bottom">
-              <div class="tag-list">${tagSpans}</div>
-              <div class="link-group">${links}</div>
+            <p class="card-summary">${item.description}</p>
+            <div class="card-foot">
+              <div class="chip-group">${chips}</div>
+              <div>${links}</div>
             </div>
           </article>
         `;
       }).join('');
     }
 
-    function selectCategory(cat) {
-      currentCategory = cat;
-      document.querySelectorAll('.cat-btn').forEach(b => {
+    function setCategory(cat) {
+      activeFilter = cat;
+      document.querySelectorAll('.tab-btn').forEach(b => {
         b.classList.toggle('active', b.getAttribute('data-category') === cat);
       });
-      filterList();
+      filterCards();
     }
 
-    function filterList() {
+    function filterCards() {
       const query = document.getElementById('searchInput').value.trim().toLowerCase();
       const list = window.PROJECTS || [];
 
       const filtered = list.filter(p => {
-        const matchCat = (currentCategory === 'all') || (p.category === currentCategory);
+        const matchCat = (activeFilter === 'all') || (p.category === activeFilter);
         if (!matchCat) return false;
 
         if (!query) return true;
@@ -230,7 +205,7 @@
         return titleMatch || descMatch || tagMatch || catMatch;
       });
 
-      renderList(filtered);
+      renderCards(filtered);
     }
 
     function copyAddress(text, hintId) {
@@ -238,9 +213,9 @@
       const hint = document.getElementById(hintId);
       if (!hint) return;
       const original = hint.textContent;
-      hint.textContent = 'COPIED!';
-      hint.style.color = '#00ff9d';
-      hint.style.borderColor = '#00ff9d';
+      hint.textContent = 'COPIED';
+      hint.style.color = '#f4f4f5';
+      hint.style.borderColor = '#71717a';
       setTimeout(() => {
         hint.textContent = original;
         hint.style.color = '';
@@ -248,11 +223,9 @@
       }, 1800);
     }
 
-    // Ping Live Server Telemetry
-    async function checkServerStatus() {
+    async function pollServer() {
       const badge = document.getElementById('statusBadge');
       const statusText = document.getElementById('statusText');
-      const motd = document.getElementById('motdText');
       const players = document.getElementById('playerCount');
       const version = document.getElementById('serverVersion');
 
@@ -275,7 +248,6 @@
             if (fbData.online) {
               data = {
                 online: true,
-                motd: { clean: fbData.motd?.clean?.join(' ') },
                 players: { online: fbData.players?.online, max: fbData.players?.max },
                 version: { name_clean: fbData.version }
               };
@@ -284,27 +256,25 @@
         }
 
         if (data && data.online) {
-          badge.className = 'status-pill online';
+          badge.className = 'status-chip online';
           statusText.textContent = 'ONLINE';
-          motd.textContent = data.motd?.clean?.trim() || 'BigBois Minecraft Server';
           players.textContent = `${data.players?.online ?? 0} / ${data.players?.max ?? '20'}`;
-          version.textContent = data.version?.name_clean || data.version?.name || '1.21.x';
+          version.textContent = data.version?.name_clean || data.version?.name || 'Paper 1.21.x';
         } else {
-          badge.className = 'status-pill offline';
+          badge.className = 'status-chip offline';
           statusText.textContent = 'OFFLINE';
-          motd.textContent = 'Host offline or unreachable.';
           players.textContent = '0 / --';
         }
       } catch (err) {
-        badge.className = 'status-pill offline';
+        badge.className = 'status-chip offline';
         statusText.textContent = 'UNAVAILABLE';
       }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      renderList(window.PROJECTS || []);
-      checkServerStatus();
-      setInterval(checkServerStatus, 30000);
+      renderCards(window.PROJECTS || []);
+      pollServer();
+      setInterval(pollServer, 30000);
     });
   </script>
 </body>
