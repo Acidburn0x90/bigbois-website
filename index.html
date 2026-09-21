@@ -3,239 +3,221 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acidburn0x90 // Systems, Infrastructure & Tech Directory</title>
-  <meta name="description" content="Personal tech home page for self-hosted infrastructure, open-source projects, and systems engineering.">
+  <title>Acidburn0x90 // Homelab & Tech Tinkering</title>
+  <meta name="description" content="Personal tech landing page, homelab servers, and amateur programming experiments.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="site-wrapper">
-    <!-- Header / Brand Identity -->
-    <header class="site-header">
-      <div class="header-top">
-        <div class="identity-brand">
-          <span class="terminal-prompt">cody@bigbois.live:~$</span>
+  <main class="site-wrapper">
+    <!-- Terminal Header Window -->
+    <header class="terminal-header">
+      <div class="window-bar">
+        <div class="window-controls">
+          <span class="window-dot dot-red"></span>
+          <span class="window-dot dot-yellow"></span>
+          <span class="window-dot dot-green"></span>
         </div>
-        <div class="header-links">
-          <a href="#status-section" class="btn-header">
-            <span>⚡ Server</span>
-          </a>
-          <a href="#projects-section" class="btn-header">
-            <span>📂 Projects</span>
-          </a>
-          <a href="https://github.com/Acidburn0x90" target="_blank" rel="noopener noreferrer" class="btn-header">
-            <span>🐙 GitHub</span>
-          </a>
-        </div>
+        <div>acidburn@arch: ~</div>
+        <div style="opacity: 0.5;">bash</div>
       </div>
-      <h1 class="site-title">Acidburn0x90 // Tech Hub</h1>
-      <p class="site-description">
-        Central home portal for live self-hosted services, systems engineering, security tools, and simulation projects.
-      </p>
+
+      <div class="header-content">
+        <h1 class="site-title">acidburn0x90 // lab</h1>
+        <p style="color: var(--text-dim); font-size: 13px;">
+          Personal directory for my self-hosted homelab server, coding projects, and random technical tinkering.
+        </p>
+
+        <!-- Prominent Disclaimer -->
+        <div class="disclaimer-banner">
+          <div>⚠️</div>
+          <div>
+            <strong>Disclaimer:</strong> I am an amateur at best. The projects and tools listed here are not all 100% original creations—many are forks, hobby experiments, university exercises, modding sandboxes, or messy scripts put together to learn how things work.
+          </div>
+        </div>
+
+        <nav class="nav-shortcuts" aria-label="Page navigation">
+          <a href="#status-section" class="nav-link">[ 01. MINECRAFT SERVER ]</a>
+          <a href="#projects-section" class="nav-link">[ 02. PROJECTS DIRECTORY ]</a>
+          <a href="https://github.com/Acidburn0x90" target="_blank" rel="noopener noreferrer" class="nav-link">[ 03. GITHUB PROFILE -> ]</a>
+        </nav>
+      </div>
     </header>
 
-    <!-- Section 1: Live Infrastructure -->
-    <section id="status-section" aria-labelledby="infra-title">
-      <div class="section-title">
-        <span id="infra-title">Live Infrastructure</span>
-        <span class="section-badge">Self-Hosted</span>
+    <!-- Section 1: Live Homelab Server -->
+    <section id="status-section" aria-labelledby="server-heading">
+      <div class="section-header">
+        <span id="server-heading" class="section-label">[ 01 ] Homelab Server</span>
+        <span class="section-count">Paper 1.21.x Crossplay</span>
       </div>
 
-      <div class="featured-widget">
-        <div class="widget-header">
-          <div class="widget-meta">
-            <h2 class="widget-title">BigBois Minecraft Crossplay Server</h2>
-            <div id="motdText" class="widget-motd">Pinging server cluster...</div>
+      <div class="server-box">
+        <div class="server-top">
+          <div>
+            <h2 class="server-name">BigBois Minecraft Server</h2>
+            <div id="motdText" style="font-size: 12px; color: var(--text-dim); margin-top: 4px;">Pinging host...</div>
           </div>
-          <div id="statusBadge" class="status-badge">
-            <span class="status-dot"></span>
-            <span id="statusText">Checking status...</span>
-          </div>
-        </div>
-
-        <!-- Telemetry Stats -->
-        <div class="stats-grid">
-          <div class="stat-item">
-            <span class="stat-label">Players Online</span>
-            <span id="playerCount" class="stat-value">-- / --</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Version</span>
-            <span id="serverVersion" class="stat-value">Paper 1.21.x</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Crossplay</span>
-            <span class="stat-value" style="color: var(--green);">Java + Bedrock</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Host Node</span>
-            <span class="stat-value">Arch Linux</span>
+          <div id="statusBadge" class="status-pill offline">
+            <span class="status-indicator"></span>
+            <span id="statusText">CHECKING...</span>
           </div>
         </div>
 
-        <!-- Connection Endpoints -->
-        <div class="endpoints-grid">
-          <!-- Java Endpoint -->
-          <div class="endpoint-box">
-            <span class="endpoint-label">☕ Java Edition (PC / Mac / Linux)</span>
-            <div class="copy-input-group" onclick="copyEndpoint('mc.bigbois.live', 'javaHint')" title="Click to copy Java server address">
-              <span>mc.bigbois.live</span>
-              <span>📋</span>
-            </div>
-            <div class="copy-hint">
-              <span>Standard SRV Discovery</span>
-              <span id="javaHint">Click to copy</span>
-            </div>
+        <!-- Telemetry Data -->
+        <div class="telemetry-row">
+          <div class="telemetry-item">
+            <div class="telemetry-key">Players</div>
+            <div id="playerCount" class="telemetry-val">-- / --</div>
           </div>
-
-          <!-- Bedrock Endpoint -->
-          <div class="endpoint-box">
-            <span class="endpoint-label">📱 Bedrock (Mobile / Win10 / Consoles)</span>
-            <div class="copy-input-group" onclick="copyEndpoint('mcb.bigbois.live', 'bedrockHint')" title="Click to copy Bedrock server address">
-              <span>mcb.bigbois.live</span>
-              <span>📋</span>
-            </div>
-            <div class="copy-hint">
-              <span>Port: <strong style="color: var(--text); font-family: 'JetBrains Mono';">19132</strong></span>
-              <span id="bedrockHint">Click to copy</span>
-            </div>
+          <div class="telemetry-item">
+            <div class="telemetry-key">Version</div>
+            <div id="serverVersion" class="telemetry-val">1.21.x</div>
+          </div>
+          <div class="telemetry-item">
+            <div class="telemetry-key">Crossplay</div>
+            <div class="telemetry-val" style="color: var(--accent);">Java + Bedrock</div>
+          </div>
+          <div class="telemetry-item">
+            <div class="telemetry-key">Host</div>
+            <div class="telemetry-val">Arch Linux</div>
           </div>
         </div>
 
-        <!-- Collapsible Connection Instructions -->
-        <div class="guide-accordion">
-          <button class="accordion-trigger" onclick="toggleAccordion()" id="guideToggle">
-            <span>📖 How to connect across devices & consoles</span>
-            <span id="guideIcon">▼</span>
+        <!-- Direct Join Endpoints -->
+        <div class="endpoints-list">
+          <!-- Java -->
+          <button type="button" class="endpoint-btn" onclick="copyAddress('mc.bigbois.live', 'javaHint')" title="Click to copy Java address">
+            <div>
+              <span class="endpoint-type">PC / Mac / Linux (Java)</span>
+              <span class="endpoint-addr">mc.bigbois.live</span>
+            </div>
+            <span id="javaHint" class="copy-badge">COPY</span>
           </button>
-          <div id="guideContent" class="accordion-content">
-            <ul>
-              <li><strong>Java Edition:</strong> Open Minecraft → Multiplayer → Direct Connection / Add Server → Server Address: <code>mc.bigbois.live</code>.</li>
-              <li><strong>Bedrock Edition (iOS, Android, Windows 10/11):</strong> Open Minecraft → Play → Servers tab → Add Server → Server Name: <code>BigBois</code> | Server Address: <code>mcb.bigbois.live</code> | Port: <code>19132</code>.</li>
-              <li><strong>Consoles (Xbox, PlayStation, Nintendo Switch):</strong> Bedrock consoles cannot add custom IPs directly out-of-the-box. Use the free companion app <strong>BedrockTogether</strong> (on iPhone/Android on the same Wi-Fi) or custom DNS redirection to join.</li>
-            </ul>
-          </div>
+
+          <!-- Bedrock -->
+          <button type="button" class="endpoint-btn" onclick="copyAddress('mcb.bigbois.live:19132', 'bedrockHint')" title="Click to copy Bedrock address">
+            <div>
+              <span class="endpoint-type">Mobile / Win10 / Consoles (Bedrock)</span>
+              <span class="endpoint-addr">mcb.bigbois.live:19132</span>
+            </div>
+            <span id="bedrockHint" class="copy-badge">COPY</span>
+          </button>
         </div>
+
+        <!-- Collapsible Mini Guide -->
+        <details class="mini-guide">
+          <summary>[ + ] Connection notes for consoles & devices</summary>
+          <ul>
+            <li><strong>Java:</strong> Multiplayer → Add Server → <code>mc.bigbois.live</code> (SRV handles custom port automatically).</li>
+            <li><strong>Bedrock (Phones/Win10):</strong> Play → Servers → Add Server → Address: <code>mcb.bigbois.live</code> | Port: <code>19132</code>.</li>
+            <li><strong>Consoles (Xbox, PlayStation, Switch):</strong> Use the <em>BedrockTogether</em> mobile app on local Wi-Fi to redirect console LAN connections to this server.</li>
+          </ul>
+        </details>
       </div>
     </section>
 
-    <!-- Section 2: Projects & Software Directory -->
-    <section id="projects-section" aria-labelledby="directory-title">
-      <div class="section-title">
-        <span id="directory-title">Projects & Software Directory</span>
-        <span id="projectCountBadge" class="section-badge">Loading...</span>
+    <!-- Section 2: Projects & Scripts Directory -->
+    <section id="projects-section" aria-labelledby="projects-heading">
+      <div class="section-header">
+        <span id="projects-heading" class="section-label">[ 02 ] Projects & Experiments Directory</span>
+        <span id="projectCountBadge" class="section-count">10 items</span>
       </div>
 
-      <div class="directory-controls">
-        <div class="search-filter-bar">
-          <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search projects, technologies, or keywords..." oninput="filterDirectory()">
-          </div>
-          <div class="filter-tabs">
-            <button class="filter-btn active" data-category="all" onclick="setCategory('all')">All</button>
-            <button class="filter-btn" data-category="infra" onclick="setCategory('infra')">Infrastructure</button>
-            <button class="filter-btn" data-category="systems" onclick="setCategory('systems')">Systems & Games</button>
-            <button class="filter-btn" data-category="security" onclick="setCategory('security')">Security & Tools</button>
-            <button class="filter-btn" data-category="simulations" onclick="setCategory('simulations')">Simulations</button>
-          </div>
+      <div class="filter-bar">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search experiments, tools, tags... (e.g. java, python, mud)" oninput="filterList()">
+        
+        <div class="category-tags">
+          <button type="button" class="cat-btn active" data-category="all" onclick="selectCategory('all')">[ALL]</button>
+          <button type="button" class="cat-btn" data-category="infra" onclick="selectCategory('infra')">[HOMELAB]</button>
+          <button type="button" class="cat-btn" data-category="systems" onclick="selectCategory('systems')">[GAMES/CODE]</button>
+          <button type="button" class="cat-btn" data-category="security" onclick="selectCategory('security')">[SECURITY/TOOLS]</button>
+          <button type="button" class="cat-btn" data-category="simulations" onclick="selectCategory('simulations')">[EXPERIMENTS/MATH]</button>
         </div>
+      </div>
 
-        <!-- Render Target Grid -->
-        <div id="directoryGrid" class="directory-grid">
-          <!-- Dynamically populated from projects.js -->
-        </div>
+      <!-- Projects Container -->
+      <div id="projectList" class="project-list">
+        <!-- Rendered dynamically from projects.js -->
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="site-footer">
+    <!-- Minimalist Footer -->
+    <footer class="terminal-footer">
+      <div>bigbois.live // amateur homelab & code</div>
       <div>
-        <span>bigbois.live</span> • Designed for Arch Linux, Hyprland & Open Source
+        <a href="#status-section">^ top</a>
       </div>
-      <nav class="footer-nav">
-        <a href="#status-section">Server Status</a>
-        <a href="#projects-section">Projects</a>
-        <a href="https://github.com/Acidburn0x90" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </nav>
     </footer>
-  </div>
+  </main>
 
   <!-- Data Script -->
   <script src="projects.js"></script>
 
-  <!-- Application Logic -->
+  <!-- Frontend Logic -->
   <script>
-    let activeCategory = 'all';
+    let currentCategory = 'all';
 
-    // Renders the directory cards from window.PROJECTS
-    function renderProjects(items) {
-      const grid = document.getElementById('directoryGrid');
-      const countBadge = document.getElementById('projectCountBadge');
-      
+    function renderList(items) {
+      const container = document.getElementById('projectList');
+      const counter = document.getElementById('projectCountBadge');
+
       if (!items || items.length === 0) {
-        grid.innerHTML = `
-          <div class="empty-state">
-            <h3>No matching projects found</h3>
-            <p style="margin-top: 8px; font-size: 0.9rem;">Try adjusting your search terms or filter category.</p>
+        container.innerHTML = `
+          <div class="empty-notice">
+            [ ! ] No matching items found for your filter.
           </div>
         `;
-        countBadge.textContent = '0 Projects';
+        counter.textContent = '0 items';
         return;
       }
 
-      countBadge.textContent = `${items.length} ${items.length === 1 ? 'Project' : 'Projects'}`;
+      counter.textContent = `${items.length} ${items.length === 1 ? 'item' : 'items'}`;
 
-      grid.innerHTML = items.map(proj => {
-        const tagBadges = proj.tags.map(t => `<span class="tag-badge">${t}</span>`).join('');
-        const actionLinks = proj.links.map(l => `
-          <a href="${l.url}" ${l.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="card-link-btn">
-            <span>${l.label}</span>
-            <span>${l.url.startsWith('http') ? '↗' : '→'}</span>
+      container.innerHTML = items.map(item => {
+        const tagSpans = item.tags.map(t => `<span class="tag">#${t}</span>`).join('');
+        const links = item.links.map(l => `
+          <a href="${l.url}" ${l.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="action-link">
+            [ ${l.label} -> ]
           </a>
         `).join('');
 
         return `
-          <article class="directory-card" id="card-${proj.id}">
-            <div class="card-top">
-              <div class="card-header-row">
-                <div class="card-icon-title">
-                  <span class="card-icon">${proj.icon || '📦'}</span>
-                  <h3 class="card-title">${proj.title}</h3>
-                </div>
-                <span class="card-category-pill">${proj.categoryLabel || proj.category}</span>
+          <article class="project-item" id="item-${item.id}">
+            <div class="item-top">
+              <div class="item-title-wrap">
+                <span>${item.icon || '•'}</span>
+                <h3 class="item-title">${item.title}</h3>
               </div>
-              <p class="card-desc">${proj.description}</p>
-              <div class="card-tags">${tagBadges}</div>
+              <span class="item-badge">${item.categoryLabel || item.category}</span>
             </div>
-            <div class="card-bottom">
-              ${actionLinks}
+            <p class="item-desc">${item.description}</p>
+            <div class="item-bottom">
+              <div class="tag-list">${tagSpans}</div>
+              <div class="link-group">${links}</div>
             </div>
           </article>
         `;
       }).join('');
     }
 
-    // Category Filter Handler
-    function setCategory(category) {
-      activeCategory = category;
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-category') === category);
+    function selectCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-category') === cat);
       });
-      filterDirectory();
+      filterList();
     }
 
-    // Combined Search and Category Filter
-    function filterDirectory() {
+    function filterList() {
       const query = document.getElementById('searchInput').value.trim().toLowerCase();
-      const allProjects = window.PROJECTS || [];
+      const list = window.PROJECTS || [];
 
-      const filtered = allProjects.filter(p => {
-        const matchesCategory = (activeCategory === 'all') || (p.category === activeCategory);
-        if (!matchesCategory) return false;
+      const filtered = list.filter(p => {
+        const matchCat = (currentCategory === 'all') || (p.category === currentCategory);
+        if (!matchCat) return false;
 
         if (!query) return true;
 
@@ -247,39 +229,26 @@
         return titleMatch || descMatch || tagMatch || catMatch;
       });
 
-      renderProjects(filtered);
+      renderList(filtered);
     }
 
-    // Copy to Clipboard Utility
-    function copyEndpoint(text, hintId) {
+    function copyAddress(text, hintId) {
       navigator.clipboard.writeText(text);
       const hint = document.getElementById(hintId);
       if (!hint) return;
       const original = hint.textContent;
-      hint.textContent = 'Copied!';
-      hint.style.color = '#58a6ff';
+      hint.textContent = 'COPIED!';
+      hint.style.color = '#00ff9d';
+      hint.style.borderColor = '#00ff9d';
       setTimeout(() => {
         hint.textContent = original;
         hint.style.color = '';
-      }, 2000);
+        hint.style.borderColor = '';
+      }, 1800);
     }
 
-    // Accordion Toggle
-    function toggleAccordion() {
-      const content = document.getElementById('guideContent');
-      const icon = document.getElementById('guideIcon');
-      const isOpen = content.classList.contains('open');
-      if (isOpen) {
-        content.classList.remove('open');
-        icon.textContent = '▼';
-      } else {
-        content.classList.add('open');
-        icon.textContent = '▲';
-      }
-    }
-
-    // Live Server Telemetry
-    async function updateServerTelemetry() {
+    // Ping Live Server Telemetry
+    async function checkServerStatus() {
       const badge = document.getElementById('statusBadge');
       const statusText = document.getElementById('statusText');
       const motd = document.getElementById('motdText');
@@ -287,61 +256,54 @@
       const version = document.getElementById('serverVersion');
 
       try {
-        // Query Java endpoint via mcstatus.io (with SRV resolution)
         let res = await fetch('https://api.mcstatus.io/v2/status/java/mc.bigbois.live');
         let data = res.ok ? await res.json() : null;
 
-        // Fallback to Bedrock endpoint if Java reports offline or unavailable
         if (!data || !data.online) {
           const bedrockRes = await fetch('https://api.mcstatus.io/v2/status/bedrock/mcb.bigbois.live:19132');
           if (bedrockRes.ok) {
-            const bedrockData = await bedrockRes.json();
-            if (bedrockData.online) {
-              data = bedrockData;
-            }
+            const bData = await bedrockRes.json();
+            if (bData.online) data = bData;
           }
         }
 
-        // Secondary fallback to mcsrvstat.us
         if (!data || !data.online) {
-          const fallbackRes = await fetch('https://api.mcsrvstat.us/3/mc.bigbois.live');
-          if (fallbackRes.ok) {
-            const fallbackData = await fallbackRes.json();
-            if (fallbackData.online) {
+          const fbRes = await fetch('https://api.mcsrvstat.us/3/mc.bigbois.live');
+          if (fbRes.ok) {
+            const fbData = await fbRes.json();
+            if (fbData.online) {
               data = {
                 online: true,
-                motd: { clean: fallbackData.motd?.clean?.join(' ') },
-                players: { online: fallbackData.players?.online, max: fallbackData.players?.max },
-                version: { name_clean: fallbackData.version }
+                motd: { clean: fbData.motd?.clean?.join(' ') },
+                players: { online: fbData.players?.online, max: fbData.players?.max },
+                version: { name_clean: fbData.version }
               };
             }
           }
         }
 
         if (data && data.online) {
-          badge.className = 'status-badge online';
-          statusText.textContent = 'Server Online';
-          motd.textContent = data.motd?.clean?.trim() || 'BigBois Crossplay Server';
+          badge.className = 'status-pill online';
+          statusText.textContent = 'ONLINE';
+          motd.textContent = data.motd?.clean?.trim() || 'BigBois Minecraft Server';
           players.textContent = `${data.players?.online ?? 0} / ${data.players?.max ?? '20'}`;
-          version.textContent = data.version?.name_clean || data.version?.name || 'Paper 1.21.x';
+          version.textContent = data.version?.name_clean || data.version?.name || '1.21.x';
         } else {
-          badge.className = 'status-badge offline';
-          statusText.textContent = 'Server Offline';
+          badge.className = 'status-pill offline';
+          statusText.textContent = 'OFFLINE';
           motd.textContent = 'Host offline or unreachable.';
           players.textContent = '0 / --';
         }
       } catch (err) {
-        console.error('Telemetry query failed:', err);
-        badge.className = 'status-badge offline';
-        statusText.textContent = 'Status Unavailable';
+        badge.className = 'status-pill offline';
+        statusText.textContent = 'UNAVAILABLE';
       }
     }
 
-    // Initial Startup
     document.addEventListener('DOMContentLoaded', () => {
-      renderProjects(window.PROJECTS || []);
-      updateServerTelemetry();
-      setInterval(updateServerTelemetry, 30000); // 30s polling
+      renderList(window.PROJECTS || []);
+      checkServerStatus();
+      setInterval(checkServerStatus, 30000);
     });
   </script>
 </body>

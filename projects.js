@@ -1,22 +1,21 @@
 /**
  * =============================================================================
- * BIGBOIS HUB - PROJECTS & SERVICES DIRECTORY DATA
+ * BIGBOIS HUB - PROJECTS & LAB DIRECTORY
  * =============================================================================
  * 
  * ZERO FRONT-END KNOWLEDGE NEEDED TO EDIT!
  * 
- * To add a new project, service, or directory link:
+ * To add a new project, experiment, or server link:
  * 1. Copy any block between the curly braces { ... },
- * 2. Paste it at the top or bottom of the `PROJECTS` list below.
- * 3. Update the fields (title, description, tags, url).
- * 4. Save and commit. The website will automatically render the new card,
- *    update the filters, and enable search!
+ * 2. Paste it in the PROJECTS list below.
+ * 3. Update title, description, tags, and link url.
+ * 4. Commit and push. The website will automatically update!
  * 
  * Categories available:
- *   - "infra"        -> Infrastructure & Servers
- *   - "systems"      -> Systems & Games
+ *   - "infra"        -> Servers & Homelab
+ *   - "systems"      -> Code & Game Tinkering
  *   - "security"     -> Security & Tools
- *   - "simulations"  -> Math, Science & Simulations
+ *   - "simulations"  -> Math & Physics Experiments
  * =============================================================================
  */
 
@@ -25,126 +24,125 @@ const PROJECTS = [
     id: "minecraft-crossplay",
     title: "BigBois Minecraft Server",
     category: "infra",
-    categoryLabel: "Infrastructure",
+    categoryLabel: "Homelab",
     icon: "⛏️",
-    description: "Dedicated 24/7 Paper 1.21.x crossplay server with GeyserMC & Floodgate for seamless Java and Bedrock co-play. Hosted on Arch Linux.",
-    tags: ["Paper 1.21", "GeyserMC", "Crossplay", "Arch Linux"],
+    description: "Self-hosted Paper crossplay server for friends. Running on a dedicated Arch Linux laptop using Crafty Controller, GeyserMC, and Floodgate for Java/Bedrock co-play.",
+    tags: ["Paper 1.21", "Geyser", "Arch Linux", "Homelab"],
     links: [
-      { label: "Live Status", url: "#status-section", icon: "server" },
-      { label: "GitHub Repo", url: "https://github.com/Acidburn0x90/bigbois-website", icon: "github" }
+      { label: "status", url: "#status-section" },
+      { label: "github", url: "https://github.com/Acidburn0x90/bigbois-website" }
     ]
   },
   {
     id: "echos-of-sylvaris",
     title: "Echos of Sylvaris (MUD)",
     category: "systems",
-    categoryLabel: "Systems & Games",
+    categoryLabel: "Games",
     icon: "⚔️",
-    description: "Custom Multi-User Dungeon text MMORPG engine featuring low-level TCP socket networking, concurrent player loops, and persistent world state.",
-    tags: ["Java", "Networking", "MMORPG", "Concurrency"],
+    description: "Toy text-based MMORPG (MUD) in Java. Built to learn raw TCP socket networking, telnet protocol handling, concurrency, and persistent entity states.",
+    tags: ["Java", "Sockets", "MUD", "Learning"],
     links: [
-      { label: "GitHub Repo", url: "https://github.com/Acidburn0x90/Echos-Of-Sylvaris", icon: "github" }
+      { label: "github", url: "https://github.com/Acidburn0x90/Echos-Of-Sylvaris" }
     ]
   },
   {
     id: "game-of-life",
     title: "Game of Life",
     category: "simulations",
-    categoryLabel: "Simulations",
+    categoryLabel: "Experiments",
     icon: "🧬",
-    description: "Conway's Game of Life cellular automata simulator with customizable grid topologies, birth/survival rule sets, and pattern visualizers.",
-    tags: ["Java", "Algorithms", "Cellular Automata", "Graphics"],
+    description: "Classic Conway's Game of Life cellular automata simulator. Written in Java to practice grid state buffers, step loops, and pattern visualization.",
+    tags: ["Java", "Algorithms", "Simulation"],
     links: [
-      { label: "GitHub Repo", url: "https://github.com/Acidburn0x90/GameOfLife", icon: "github" }
+      { label: "github", url: "https://github.com/Acidburn0x90/GameOfLife" }
     ]
   },
   {
     id: "chaoslite",
-    title: "ChaosLite Security Suite",
+    title: "ChaosLite Recon Suite",
     category: "security",
-    categoryLabel: "Security & Tools",
+    categoryLabel: "Security",
     icon: "🛡️",
-    description: "Autonomous agentic red-teaming and security reconnaissance framework with multi-agent orchestration, infrastructure mapping, and reporting.",
-    tags: ["Python", "Security", "Agents", "Automation"],
+    description: "Personal red-team toolchain and recon framework. Experiments in orchestrating nmap scanning, bash tools, and local LLM task routing.",
+    tags: ["Python", "Nmap", "Security", "Automation"],
     links: [
-      { label: "Profile", url: "https://github.com/Acidburn0x90", icon: "external" }
+      { label: "profile", url: "https://github.com/Acidburn0x90" }
     ]
   },
   {
     id: "cas-engine",
     title: "Computer Algebra System",
     category: "simulations",
-    categoryLabel: "Math & Science",
+    categoryLabel: "Math",
     icon: "📐",
-    description: "Symbolic mathematics engine built in Java for AST expression parsing, symbolic algebraic simplification, differentiation, and equation solving.",
-    tags: ["Java", "Mathematics", "AST", "Compilers"],
+    description: "Amateur symbolic math parser in Java. Toy AST tree-walker built to test symbolic expression differentiation and basic algebra simplification.",
+    tags: ["Java", "Math", "AST", "Parser"],
     links: [
-      { label: "GitHub Repo", url: "https://github.com/Acidburn0x90/CAS", icon: "github" }
+      { label: "github", url: "https://github.com/Acidburn0x90/CAS" }
     ]
   },
   {
     id: "autodiff-dual-numbers",
     title: "Auto-Diff with Dual Numbers",
     category: "simulations",
-    categoryLabel: "Math & Science",
+    categoryLabel: "Math",
     icon: "📈",
-    description: "Forward-mode automatic differentiation leveraging dual number hypercomplex algebra for exact analytical derivatives without symbolic overhead.",
-    tags: ["Algorithms", "Math", "AutoDiff"],
+    description: "Forward-mode automatic differentiation implemented via dual number arithmetic. A small math exploration into computing exact derivatives without symbolic expansion.",
+    tags: ["Algorithms", "Math", "Dual Numbers"],
     links: [
-      { label: "GitHub Repo", url: "https://github.com/Acidburn0x90/Automatic-Differentiation-with-Dual-Numbers", icon: "github" }
+      { label: "github", url: "https://github.com/Acidburn0x90/Automatic-Differentiation-with-Dual-Numbers" }
     ]
   },
   {
     id: "network-mapping",
-    title: "Network Topology & Mapping",
+    title: "Network Topology Mapper",
     category: "security",
-    categoryLabel: "Security & Tools",
+    categoryLabel: "Tools",
     icon: "🌐",
-    description: "Automated subnet discovery, host port profiling, and dynamic network topology graph generation via Nmap and Graphviz.",
-    tags: ["Python", "Nmap", "Graphviz", "Networking"],
+    description: "Python scripts that run automated subnet sweeps via nmap, profile live listening hosts, and output network topology graphs using Graphviz.",
+    tags: ["Python", "Nmap", "Graphviz", "Network"],
     links: [
-      { label: "Profile", url: "https://github.com/Acidburn0x90", icon: "external" }
+      { label: "profile", url: "https://github.com/Acidburn0x90" }
     ]
   },
   {
     id: "physics-sim",
-    title: "Physics & Orbital Simulators",
+    title: "Physics & Orbit Simulators",
     category: "simulations",
-    categoryLabel: "Simulations",
+    categoryLabel: "Experiments",
     icon: "🪐",
-    description: "Interactive numerical physics simulations including gravitational n-body orbital mechanics, Lorenz chaotic strange attractors, and kinematics.",
-    tags: ["Python", "SciPy", "Physics", "Dynamics"],
+    description: "Python numerical scripts for plotting chaotic systems (Lorenz strange attractors) and basic 2D gravitational n-body orbits with SciPy/Matplotlib.",
+    tags: ["Python", "SciPy", "Physics", "Plots"],
     links: [
-      { label: "Profile", url: "https://github.com/Acidburn0x90", icon: "external" }
+      { label: "profile", url: "https://github.com/Acidburn0x90" }
     ]
   },
   {
     id: "flipper-irdb",
     title: "Flipper Zero IR Database",
     category: "security",
-    categoryLabel: "Security & Tools",
+    categoryLabel: "Hardware",
     icon: "📻",
-    description: "Curated collection and analysis of infrared signal captures and remote profiles for hardware security testing and home automation.",
-    tags: ["Embedded", "Hardware", "IR", "Flipper Zero"],
+    description: "Curated collection and forks of IR signal dictionaries and remotes for hardware testing on the Flipper Zero.",
+    tags: ["Flipper Zero", "IR", "Hardware", "Fork"],
     links: [
-      { label: "GitHub Repo", url: "https://github.com/Acidburn0x90/Flipper-IRDB", icon: "github" }
+      { label: "github", url: "https://github.com/Acidburn0x90/Flipper-IRDB" }
     ]
   },
   {
     id: "slime-rancher-mods",
     title: "Slime Rancher Modding",
     category: "systems",
-    categoryLabel: "Systems & Games",
+    categoryLabel: "Modding",
     icon: "🧪",
-    description: "C# .NET runtime game modification, bytecode patching, and reverse engineering for custom slime behaviors and game mechanics.",
-    tags: ["C#", ".NET", "Game Modding", "Reverse Eng"],
+    description: "Experiments in C#/.NET game modding and Unity reverse engineering. Messing with IL patching and custom slime behaviors for fun.",
+    tags: ["C#", ".NET", "Unity", "Modding"],
     links: [
-      { label: "Profile", url: "https://github.com/Acidburn0x90", icon: "external" }
+      { label: "profile", url: "https://github.com/Acidburn0x90" }
     ]
   }
 ];
 
-// Export to window object for browser access
 if (typeof window !== 'undefined') {
   window.PROJECTS = PROJECTS;
 }
