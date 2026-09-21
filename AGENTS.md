@@ -1,34 +1,42 @@
-# BigBois Website (`bigbois.live`)
+# BigBois Website & Personal Tech Directory (`bigbois.live`)
 
-Live status portal and player onboarding page for the **BigBois Minecraft Crossplay Server**.
+Central personal tech home portal, live infrastructure status page, and project directory for `Acidburn0x90`.
 
 ## Architecture & Hosting
 
-* **Domain Registrar:** Squarespace Domains (`bigbois.live`).
+* **Domain:** `bigbois.live` (Squarespace Domains).
 * **Repository:** `https://github.com/Acidburn0x90/bigbois-website`
-* **Custom Domain File (`CNAME`):**
-  - Contains `bigbois.live`.
-  - **CRITICAL:** Do not delete, rename, or modify `CNAME`. GitHub Pages requires this file at the repository root to maintain SSL certificate binding and routing.
 * **Hosting Platform:** GitHub Pages (serving static files from root `/` of `main` branch).
-* **Static Site Engine:** Bypasses Jekyll via `.nojekyll` file at repository root.
-* **DNS Overview:**
-  - Apex (`@`) and `www`: Routed to GitHub Pages infrastructure.
-  - `mc.bigbois.live`: Java Edition Minecraft endpoint (automatic SRV discovery).
-  - `mcb.bigbois.live`: Bedrock Edition Minecraft endpoint (standard port: `19132`).
+* **Domain Binding (`CNAME`):** Contains `bigbois.live`. **Do not delete or modify.**
+* **Static Site Config:** Bypasses Jekyll via `.nojekyll` file at repository root.
+* **DNS Endpoints:**
+  * Apex (`@`) and `www`: GitHub Pages infrastructure.
+  * `mc.bigbois.live`: Java Minecraft endpoint (SRV discovery).
+  * `mcb.bigbois.live`: Bedrock Minecraft endpoint (Port: `19132`).
 
-## Server & Crossplay Stack
+## Component Layout
 
-* **Platform:** Paper Minecraft Server with GeyserMC + Floodgate (Java + Bedrock crossplay).
-* **Java Connection:** `mc.bigbois.live` (standard client multiplayer entry).
-* **Bedrock Connection:** `mcb.bigbois.live` (default port `19132`).
+1. **`index.html`**: Semantic, accessible shell containing the header, featured live infrastructure widget, and search/filter controls.
+2. **`style.css`**: Modern Arch/Hyprland dark theme CSS stylesheet.
+3. **`projects.js`**: Data store for all projects and directory items. Zero frontend knowledge needed to add or modify items.
 
-## Real-Time Telemetry
+## How to Add or Modify Projects (Zero Frontend Knowledge)
 
-* **Primary Telemetry:** `https://api.mcstatus.io/v2/status/java/mc.bigbois.live` (queries server status, online players, version, and MOTD).
-* **Fallback 1:** `https://api.mcstatus.io/v2/status/bedrock/mcb.bigbois.live:19132`
-* **Fallback 2:** `https://api.mcsrvstat.us/3/mc.bigbois.live`
+All directory items are managed inside `projects.js`. To add a new project, append a new object to the `PROJECTS` array:
 
-## Development Workflow
+```javascript
+{
+  id: "project-slug",
+  title: "Project Title",
+  category: "systems", // "infra" | "systems" | "security" | "simulations"
+  categoryLabel: "Category Name",
+  icon: "🚀",
+  description: "High-signal description of the project.",
+  tags: ["Tech1", "Tech2"],
+  links: [
+    { label: "GitHub Repo", url: "https://github.com/...", icon: "github" }
+  ]
+}
+```
 
-1. **Local Preview:** Run `python3 -m http.server 8000` from repo root and open `http://localhost:8000`.
-2. **Git Hygiene:** Verify `git status` and `git diff` before staging. Use atomic conventional commits.
+The application automatically renders the card, updates project counts, and enables search and category filtering.
