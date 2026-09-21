@@ -112,16 +112,20 @@ body {
   font-size: 11px;
   color: var(--text-dim);
   text-decoration: none;
-  border: 1px dashed var(--border);
-  padding: 4px 8px;
-  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.4);
   transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .nav-link:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(0, 255, 157, 0.05);
+  background: rgba(0, 255, 157, 0.08);
 }
 
 /* Disclaimer Callout */
@@ -491,15 +495,19 @@ body {
   color: var(--accent-cyan);
   text-decoration: none;
   border: 1px solid var(--border);
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 2px;
   background: #080a0f;
   transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .action-link:hover {
   border-color: var(--accent-cyan);
   color: #fff;
+  background: rgba(56, 189, 248, 0.1);
 }
 
 /* Empty State */
