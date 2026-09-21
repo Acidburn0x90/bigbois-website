@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BigBois Minecraft Server | Live Status & Join Info</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: rgba(22, 27, 34, 0.85);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --green: #2ea043;
+      --green-glow: rgba(46, 160, 67, 0.4);
+      --red: #da3633;
+      --accent: #58a6ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      background-image: radial-gradient(circle at 50% 0%, rgba(88, 166, 255, 0.08) 0%, transparent 70%);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .header-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--text-muted);
+      transition: all 0.3s ease;
+    }
+
+    .online .status-dot {
+      background-color: var(--green);
+      box-shadow: 0 0 12px var(--green-glow);
+      animation: pulse 2s infinite;
+    }
+
+    .offline .status-dot {
+      background-color: var(--red);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #fff 0%, #8b949e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .motd {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .stat-val {
+      font-size: 1.15rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .join-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+
+    .platform-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .copy-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .copy-box:hover {
+      border-color: var(--accent);
+    }
+
+    .copy-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .instructions-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .instructions-card strong { color: var(--text); }
+    .instructions-card code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Main Status Card -->
+    <div class="header-card">
+      <div id="statusBadge" class="status-badge">
+        <span class="status-dot"></span>
+        <span id="statusText">Checking server...</span>
+      </div>
+
+      <h1>BigBois Server</h1>
+      <div id="motdText" class="motd">Loading server details...</div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-label">Players</span>
+          <span id="playerCount" class="stat-val">-- / --</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Version</span>
+          <span id="serverVersion" class="stat-val">1.21.x</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Crossplay</span>
+          <span class="stat-val" style="color: var(--green);">Enabled</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connection Cards -->
+    <div class="grid">
+      <!-- Java Card -->
+      <div class="join-card">
+        <span class="platform-tag">☕ Java Edition (PC / Mac)</span>
+        <div class="copy-box" onclick="copyText('mc.bigbois.live', 'javaHint')">
+          <span>mc.bigbois.live</span>
+          <span style="font-size: 1.1rem;">📋</span>
+        </div>
+        <div id="javaHint" class="copy-hint">Click box to copy IP</div>
+      </div>
+
+      <!-- Bedrock Card -->
+      <div class="join-card">
+        <span class="platform-tag">📱 Bedrock (Mobile / Win10 / Consoles)</span>
+        <div class="copy-box" onclick="copyText('mcb.bigbois.live', 'bedrockHint')">
+          <span>mcb.bigbois.live</span>
+          <span style="font-size: 1.1rem;">📋</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); align-items: center;">
+          <span>Port: <strong style="color: var(--text); font-family: 'JetBrains Mono';">19132</strong></span>
+          <span id="bedrockHint" class="copy-hint">Click box to copy IP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructions Card -->
+    <div class="instructions-card">
+      <strong>How to connect:</strong><br>
+      • <strong>Java:</strong> Go to Multiplayer → Add Server → Enter <code>mc.bigbois.live</code>.<br>
+      • <strong>Bedrock:</strong> Go to Play → Servers → Add Server → Server Address: <code>mcb.bigbois.live</code> | Port: <code>19132</code>.<br>
+      • <strong>Consoles (Xbox, Switch, PlayStation):</strong> Use the free <em>BedrockTogether</em> mobile app or custom DNS to join third-party dedicated servers.
+    </div>
+  </div>
+
+  <script>
+    async function fetchServerStatus() {
+      const badge = document.getElementById('statusBadge');
+      const statusText = document.getElementById('statusText');
+      const motd = document.getElementById('motdText');
+      const players = document.getElementById('playerCount');
+      const version = document.getElementById('serverVersion');
+
+      try {
+        // Query Java endpoint via mcstatus.io (supports SRV record resolution)
+        let res = await fetch('https://api.mcstatus.io/v2/status/java/mc.bigbois.live');
+        let data = res.ok ? await res.json() : null;
+
+        // If Java fails or reports offline, query Bedrock endpoint
+        if (!data || !data.online) {
+          const bedrockRes = await fetch('https://api.mcstatus.io/v2/status/bedrock/mcb.bigbois.live:19132');
+          if (bedrockRes.ok) {
+            const bedrockData = await bedrockRes.json();
+            if (bedrockData.online) {
+              data = bedrockData;
+            }
+          }
+        }
+
+        // Secondary fallback to mcsrvstat.us
+        if (!data || !data.online) {
+          const fallbackRes = await fetch('https://api.mcsrvstat.us/3/mc.bigbois.live');
+          if (fallbackRes.ok) {
+            const fallbackData = await fallbackRes.json();
+            if (fallbackData.online) {
+              data = {
+                online: true,
+                motd: { clean: fallbackData.motd?.clean?.join(' ') },
+                players: { online: fallbackData.players?.online, max: fallbackData.players?.max },
+                version: { name_clean: fallbackData.version }
+              };
+            }
+          }
+        }
+
+        if (data && data.online) {
+          badge.className = 'status-badge online';
+          statusText.textContent = 'Server Online';
+          motd.textContent = data.motd?.clean?.trim() || 'BigBois Crossplay Server';
+          players.textContent = `${data.players?.online ?? 0} / ${data.players?.max ?? '--'}`;
+          version.textContent = data.version?.name_clean || data.version?.name || '1.21.x';
+        } else {
+          badge.className = 'status-badge offline';
+          statusText.textContent = 'Server Offline';
+          motd.textContent = 'The server is currently offline.';
+          players.textContent = '0 / --';
+        }
+      } catch (err) {
+        console.error('Failed to fetch status:', err);
+        badge.className = 'status-badge offline';
+        statusText.textContent = 'Status Unavailable';
+      }
+    }
+
+    function copyText(text, hintId) {
+      navigator.clipboard.writeText(text);
+      const hint = document.getElementById(hintId);
+      const old = hint.textContent;
+      hint.textContent = 'Copied to clipboard!';
+      hint.style.color = '#58a6ff';
+      setTimeout(() => {
+        hint.textContent = old;
+        hint.style.color = '';
+      }, 2000);
+    }
+
+    fetchServerStatus();
+    setInterval(fetchServerStatus, 30000); // Auto-refresh every 30s
+  </script>
+</body>
+</html>
