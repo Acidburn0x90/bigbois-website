@@ -40,9 +40,9 @@
         </div>
 
         <nav class="nav-shortcuts" aria-label="Page navigation">
-          <a href="#status-section" class="nav-link">[ 01. MINECRAFT SERVER ]</a>
-          <a href="#projects-section" class="nav-link">[ 02. PROJECTS DIRECTORY ]</a>
-          <a href="https://github.com/Acidburn0x90" target="_blank" rel="noopener noreferrer" class="nav-link">[ 03. GITHUB PROFILE -> ]</a>
+          <a href="#status-section" class="nav-link">01 // MINECRAFT SERVER</a>
+          <a href="#projects-section" class="nav-link">02 // PROJECTS DIRECTORY</a>
+          <a href="https://github.com/Acidburn0x90" target="_blank" rel="noopener noreferrer" class="nav-link">03 // GITHUB PROFILE ↗</a>
         </nav>
       </div>
     </header>
@@ -50,7 +50,7 @@
     <!-- Section 1: Live Homelab Server -->
     <section id="status-section" aria-labelledby="server-heading">
       <div class="section-header">
-        <span id="server-heading" class="section-label">[ 01 ] Homelab Server</span>
+        <span id="server-heading" class="section-label">01 // Homelab Server</span>
         <span class="section-count">Paper 1.21.x Crossplay</span>
       </div>
 
@@ -109,7 +109,7 @@
 
         <!-- Collapsible Mini Guide -->
         <details class="mini-guide">
-          <summary>[ + ] Connection notes for consoles & devices</summary>
+          <summary>+ Connection notes for consoles & devices</summary>
           <ul>
             <li><strong>Java:</strong> Multiplayer → Add Server → <code>mc.bigbois.live</code> (SRV handles custom port automatically).</li>
             <li><strong>Bedrock (Phones/Win10):</strong> Play → Servers → Add Server → Address: <code>mcb.bigbois.live</code> | Port: <code>19132</code>.</li>
@@ -122,7 +122,7 @@
     <!-- Section 2: Projects & Scripts Directory -->
     <section id="projects-section" aria-labelledby="projects-heading">
       <div class="section-header">
-        <span id="projects-heading" class="section-label">[ 02 ] Projects & Experiments Directory</span>
+        <span id="projects-heading" class="section-label">02 // Projects & Experiments Directory</span>
         <span id="projectCountBadge" class="section-count">10 items</span>
       </div>
 
@@ -130,11 +130,11 @@
         <input type="text" id="searchInput" class="search-input" placeholder="Search experiments, tools, tags... (e.g. java, python, mud)" oninput="filterList()">
         
         <div class="category-tags">
-          <button type="button" class="cat-btn active" data-category="all" onclick="selectCategory('all')">[ALL]</button>
-          <button type="button" class="cat-btn" data-category="infra" onclick="selectCategory('infra')">[HOMELAB]</button>
-          <button type="button" class="cat-btn" data-category="systems" onclick="selectCategory('systems')">[GAMES/CODE]</button>
-          <button type="button" class="cat-btn" data-category="security" onclick="selectCategory('security')">[SECURITY/TOOLS]</button>
-          <button type="button" class="cat-btn" data-category="simulations" onclick="selectCategory('simulations')">[EXPERIMENTS/MATH]</button>
+          <button type="button" class="cat-btn active" data-category="all" onclick="selectCategory('all')">ALL</button>
+          <button type="button" class="cat-btn" data-category="infra" onclick="selectCategory('infra')">HOMELAB</button>
+          <button type="button" class="cat-btn" data-category="systems" onclick="selectCategory('systems')">GAMES & CODE</button>
+          <button type="button" class="cat-btn" data-category="security" onclick="selectCategory('security')">SECURITY & TOOLS</button>
+          <button type="button" class="cat-btn" data-category="simulations" onclick="selectCategory('simulations')">EXPERIMENTS & MATH</button>
         </div>
       </div>
 
@@ -167,7 +167,7 @@
       if (!items || items.length === 0) {
         container.innerHTML = `
           <div class="empty-notice">
-            [ ! ] No matching items found for your filter.
+            No matching items found for your filter.
           </div>
         `;
         counter.textContent = '0 items';
@@ -180,7 +180,8 @@
         const tagSpans = item.tags.map(t => `<span class="tag">#${t}</span>`).join('');
         const links = item.links.map(l => `
           <a href="${l.url}" ${l.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="action-link">
-            [ ${l.label} -> ]
+            <span>${l.label.toUpperCase()}</span>
+            <span>↗</span>
           </a>
         `).join('');
 
