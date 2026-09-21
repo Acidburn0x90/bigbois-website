@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>acidburn0x90 // homelab & code</title>
+  <title>acidburn0x90 // starlit-signal</title>
   <meta name="description" content="Personal homelab status and directory of amateur programming projects.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,166 +12,181 @@
 </head>
 <body>
 
-  <div class="site-wrapper">
-    <!-- Top Skeletal Header Bar -->
-    <header class="skeletal-bar">
-      <div class="brand-identity">
-        <span class="brand-dot"></span>
-        <span class="brand-title">acidburn0x90</span>
-        <span class="brand-sub">// homelab & code</span>
+  <div class="wm-desktop">
+    <!-- Waybar Status Bar -->
+    <header class="waybar">
+      <div class="waybar-left">
+        <nav class="workspaces-group" aria-label="Workspaces">
+          <a href="#win-server" class="ws-pill active" id="ws1">1:sys</a>
+          <a href="#win-projects" class="ws-pill" id="ws2">2:dev</a>
+        </nav>
+        <span class="waybar-title">archlinux-starlit-signal :: bigbois.live</span>
       </div>
-      <nav class="nav-group" aria-label="Quick links">
-        <a href="#server-widget" class="nav-btn">server</a>
-        <a href="#projects-grid" class="nav-btn">projects</a>
-        <a href="https://github.com/Acidburn0x90" target="_blank" rel="noopener noreferrer" class="nav-btn">github ↗</a>
-      </nav>
+
+      <div class="waybar-right">
+        <div id="statusBadge" class="module-pill offline">
+          <span class="status-dot"></span>
+          <span id="statusText">MC: OFFLINE</span>
+        </div>
+        <div class="module-pill">
+          <a href="https://github.com/Acidburn0x90" target="_blank" rel="noopener noreferrer">gh/Acidburn0x90 ↗</a>
+        </div>
+      </div>
     </header>
 
-    <!-- Disclaimer Banner (Concise Skeletal Callout) -->
-    <div class="skeletal-disclaimer">
-      <span class="disclaimer-label">Note</span>
-      <span>Amateur at best. Projects here are hobby experiments, forks, and casual learning builds—not original enterprise software.</span>
-    </div>
+    <!-- Disclaimer Callout -->
+    <aside class="wm-disclaimer">
+      <span class="disclaimer-badge">Notice</span>
+      <span>Amateur hobbyist & tinkerer. The projects here are learning exercises, forks, and homelab sandboxes—not original commercial software.</span>
+    </aside>
 
-    <!-- Section 1: Homelab Server (Skeletal Panel) -->
-    <section id="server-widget" class="section-shell" aria-labelledby="server-title">
-      <div class="section-head">
-        <span id="server-title" class="section-tag">Homelab Server</span>
-        <span class="section-meta">Arch Linux Node</span>
+    <!-- Tiling Window 1: Server Service -->
+    <section id="win-server" class="tile-window" tabindex="-1" aria-labelledby="win1-title">
+      <div class="tile-bar">
+        <div class="tile-title">
+          <span>systemd</span>
+          <span id="win1-title" style="color: var(--text-muted);">// mc-server.service</span>
+        </div>
+        <span class="tile-tag">[ 1 ] Active Service</span>
       </div>
 
-      <div class="skeletal-panel">
-        <div class="panel-header">
-          <div class="panel-title">BigBois Minecraft (Paper 1.21.x)</div>
-          <div id="statusBadge" class="status-chip offline">
-            <span class="chip-dot"></span>
-            <span id="statusText">CHECKING</span>
+      <div class="tile-body">
+        <!-- Telemetry Row -->
+        <div class="metric-row">
+          <div class="metric-box">
+            <span class="metric-lbl">Players</span>
+            <span id="playerCount" class="metric-val">-- / --</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-lbl">Version</span>
+            <span id="serverVersion" class="metric-val">Paper 1.21.x</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-lbl">Crossplay</span>
+            <span class="metric-val">Java + Bedrock</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-lbl">SRV Port</span>
+            <span class="metric-val">58141</span>
           </div>
         </div>
 
-        <!-- 4-Cell Skeletal Grid -->
-        <div class="skeletal-grid-4">
-          <div class="metric-cell">
-            <span class="metric-label">Players</span>
-            <span id="playerCount" class="metric-value">-- / --</span>
-          </div>
-          <div class="metric-cell">
-            <span class="metric-label">Version</span>
-            <span id="serverVersion" class="metric-value">Paper 1.21.x</span>
-          </div>
-          <div class="metric-cell">
-            <span class="metric-label">Crossplay</span>
-            <span class="metric-value">Java + Bedrock</span>
-          </div>
-          <div class="metric-cell">
-            <span class="metric-label">Port</span>
-            <span class="metric-value">58141 SRV</span>
-          </div>
-        </div>
-
-        <!-- Direct Join Endpoints -->
-        <div class="endpoint-row">
-          <div class="endpoint-card" onclick="copyAddress('mc.bigbois.live', 'javaPill')" title="Click to copy Java address">
+        <!-- Endpoints Grid -->
+        <div class="endpoints-grid">
+          <div class="endpoint-action" onclick="copyAddress('mc.bigbois.live', 'keyJava')" title="Copy Java address [Press c]">
             <div>
-              <span class="endpoint-sub">Java Edition (PC / Mac)</span>
-              <span class="endpoint-text">mc.bigbois.live</span>
+              <span class="endpoint-name">Java Edition (PC / Mac)</span>
+              <span class="endpoint-value">mc.bigbois.live</span>
             </div>
-            <span id="javaPill" class="copy-pill">COPY</span>
+            <span id="keyJava" class="key-badge">KEY: C</span>
           </div>
 
-          <div class="endpoint-card" onclick="copyAddress('mcb.bigbois.live:19132', 'bedrockPill')" title="Click to copy Bedrock address">
+          <div class="endpoint-action" onclick="copyAddress('mcb.bigbois.live:19132', 'keyBedrock')" title="Copy Bedrock address [Press b]">
             <div>
-              <span class="endpoint-sub">Bedrock Edition (Mobile / Win10 / Console)</span>
-              <span class="endpoint-text">mcb.bigbois.live:19132</span>
+              <span class="endpoint-name">Bedrock Edition (Mobile / Win10 / Consoles)</span>
+              <span class="endpoint-value">mcb.bigbois.live:19132</span>
             </div>
-            <span id="bedrockPill" class="copy-pill">COPY</span>
+            <span id="keyBedrock" class="key-badge">KEY: B</span>
           </div>
         </div>
 
-        <!-- Collapsible Mini Guide -->
-        <details class="skeletal-details">
-          <summary>Console & Client Connection Details</summary>
+        <!-- Collapsible Console Notes -->
+        <details class="wm-accordion">
+          <summary>Console & Direct Connection Notes</summary>
           <ul>
-            <li><strong>Java:</strong> Multiplayer → Add Server → <code>mc.bigbois.live</code> (SRV automatic port resolution).</li>
+            <li><strong>Java:</strong> Multiplayer → Add Server → <code>mc.bigbois.live</code> (SRV record routes to port 58141).</li>
             <li><strong>Bedrock:</strong> Play → Servers → Add Server → Address: <code>mcb.bigbois.live</code> | Port: <code>19132</code>.</li>
-            <li><strong>Consoles:</strong> Use the free <em>BedrockTogether</em> mobile app on your local Wi-Fi to redirect console LAN discovery.</li>
+            <li><strong>Consoles:</strong> Use <em>BedrockTogether</em> mobile companion app on local Wi-Fi to join third-party servers.</li>
           </ul>
         </details>
       </div>
     </section>
 
-    <!-- Section 2: Projects Directory (Skeletal Grid) -->
-    <section id="projects-grid" class="section-shell" aria-labelledby="directory-title">
-      <div class="section-head">
-        <span id="directory-title" class="section-tag">Project Directory</span>
-        <span id="countBadge" class="section-meta">10 entries</span>
-      </div>
-
-      <div class="controls-bar">
-        <input type="text" id="searchInput" class="skeletal-search" placeholder="Filter projects by title, stack, or tag..." oninput="filterCards()">
-        
-        <div class="tab-list">
-          <button type="button" class="tab-btn active" data-category="all" onclick="setCategory('all')">ALL</button>
-          <button type="button" class="tab-btn" data-category="infra" onclick="setCategory('infra')">HOMELAB</button>
-          <button type="button" class="tab-btn" data-category="systems" onclick="setCategory('systems')">GAMES</button>
-          <button type="button" class="tab-btn" data-category="security" onclick="setCategory('security')">SECURITY</button>
-          <button type="button" class="tab-btn" data-category="simulations" onclick="setCategory('simulations')">EXPERIMENTS</button>
+    <!-- Tiling Window 2: Projects Directory -->
+    <section id="win-projects" class="tile-window" tabindex="-1" aria-labelledby="win2-title">
+      <div class="tile-bar">
+        <div class="tile-title">
+          <span>nvim</span>
+          <span id="win2-title" style="color: var(--text-muted);">// directory.json</span>
         </div>
+        <span id="entryCount" class="tile-tag">[ 2 ] 10 entries</span>
       </div>
 
-      <!-- Render Target Cards Grid -->
-      <div id="cardsGrid" class="cards-grid">
-        <!-- Injected from projects.js -->
+      <div class="tile-body">
+        <div class="controls-strip">
+          <input type="text" id="searchInput" class="search-field" placeholder="Search entries [/]... (esc to clear)" oninput="filterCards()">
+          
+          <div class="filter-strip">
+            <button type="button" class="filter-pill active" data-category="all" onclick="setCategory('all')">ALL</button>
+            <button type="button" class="filter-pill" data-category="infra" onclick="setCategory('infra')">HOMELAB</button>
+            <button type="button" class="filter-pill" data-category="systems" onclick="setCategory('systems')">GAMES</button>
+            <button type="button" class="filter-pill" data-category="security" onclick="setCategory('security')">SECURITY</button>
+            <button type="button" class="filter-pill" data-category="simulations" onclick="setCategory('simulations')">EXPERIMENTS</button>
+          </div>
+        </div>
+
+        <!-- 2-Column Tiled Cards -->
+        <div id="cardsTiling" class="cards-tiling">
+          <!-- Populated from projects.js -->
+        </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="skeletal-footer">
-      <div>bigbois.live // charcoal monotone</div>
-      <a href="#server-widget">^ top</a>
+    <!-- Bottom Keybinds Bar -->
+    <footer class="waybar-bottom">
+      <div class="binds-hints">
+        <span class="bind-item"><kbd>1</kbd>server</span>
+        <span class="bind-item"><kbd>2</kbd>projects</span>
+        <span class="bind-item"><kbd>/</kbd>search</span>
+        <span class="bind-item"><kbd>c</kbd>copy-java</span>
+        <span class="bind-item"><kbd>b</kbd>copy-bedrock</span>
+        <span class="bind-item"><kbd>g</kbd>github</span>
+        <span class="bind-item"><kbd>esc</kbd>unfocus</span>
+      </div>
+      <div>bigbois.live</div>
     </footer>
   </div>
 
-  <!-- Data Store -->
+  <!-- Data Script -->
   <script src="projects.js"></script>
 
-  <!-- Client Script -->
+  <!-- Window Manager Interactivity & Telemetry -->
   <script>
-    let activeFilter = 'all';
+    let activeCat = 'all';
 
     function renderCards(items) {
-      const container = document.getElementById('cardsGrid');
-      const counter = document.getElementById('countBadge');
+      const container = document.getElementById('cardsTiling');
+      const counter = document.getElementById('entryCount');
 
       if (!items || items.length === 0) {
         container.innerHTML = `
-          <div class="empty-box">
-            No entries matching your filter.
+          <div class="empty-notice">
+            No entries matching your filter criteria.
           </div>
         `;
-        counter.textContent = '0 entries';
+        counter.textContent = '[ 2 ] 0 entries';
         return;
       }
 
-      counter.textContent = `${items.length} ${items.length === 1 ? 'entry' : 'entries'}`;
+      counter.textContent = `[ 2 ] ${items.length} ${items.length === 1 ? 'entry' : 'entries'}`;
 
       container.innerHTML = items.map(item => {
-        const chips = item.tags.map(t => `<span class="chip">${t}</span>`).join('');
+        const chips = item.tags.map(t => `<span class="tag-chip">${t}</span>`).join('');
         const links = item.links.map(l => `
-          <a href="${l.url}" ${l.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="card-action-btn">
+          <a href="${l.url}" ${l.url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="card-btn">
             ${l.label} ↗
           </a>
         `).join('');
 
         return `
-          <article class="card-frame" id="card-${item.id}">
-            <div class="card-headline">
-              <span class="card-name">${item.title}</span>
-              <span class="card-category-badge">${item.categoryLabel || item.category}</span>
+          <article class="project-card" id="card-${item.id}">
+            <div class="card-top-row">
+              <span class="card-heading">${item.title}</span>
+              <span class="card-type">${item.categoryLabel || item.category}</span>
             </div>
-            <p class="card-summary">${item.description}</p>
-            <div class="card-foot">
-              <div class="chip-group">${chips}</div>
+            <p class="card-desc">${item.description}</p>
+            <div class="card-bottom-row">
+              <div class="tag-cloud">${chips}</div>
               <div>${links}</div>
             </div>
           </article>
@@ -180,8 +195,8 @@
     }
 
     function setCategory(cat) {
-      activeFilter = cat;
-      document.querySelectorAll('.tab-btn').forEach(b => {
+      activeCat = cat;
+      document.querySelectorAll('.filter-pill').forEach(b => {
         b.classList.toggle('active', b.getAttribute('data-category') === cat);
       });
       filterCards();
@@ -192,7 +207,7 @@
       const list = window.PROJECTS || [];
 
       const filtered = list.filter(p => {
-        const matchCat = (activeFilter === 'all') || (p.category === activeFilter);
+        const matchCat = (activeCat === 'all') || (p.category === activeCat);
         if (!matchCat) return false;
 
         if (!query) return true;
@@ -208,22 +223,59 @@
       renderCards(filtered);
     }
 
-    function copyAddress(text, hintId) {
+    function copyAddress(text, badgeId) {
       navigator.clipboard.writeText(text);
-      const hint = document.getElementById(hintId);
-      if (!hint) return;
-      const original = hint.textContent;
-      hint.textContent = 'COPIED';
-      hint.style.color = '#f4f4f5';
-      hint.style.borderColor = '#71717a';
+      const badge = document.getElementById(badgeId);
+      if (!badge) return;
+      const original = badge.textContent;
+      badge.textContent = 'COPIED';
+      badge.style.borderColor = '#22c55e';
+      badge.style.color = '#22c55e';
       setTimeout(() => {
-        hint.textContent = original;
-        hint.style.color = '';
-        hint.style.borderColor = '';
-      }, 1800);
+        badge.textContent = original;
+        badge.style.borderColor = '';
+        badge.style.color = '';
+      }, 1600);
     }
 
-    async function pollServer() {
+    // Keyboard Shortcuts Navigation (Hyprland WM feel)
+    document.addEventListener('keydown', (e) => {
+      const search = document.getElementById('searchInput');
+      const isInputFocused = document.activeElement === search;
+
+      if (e.key === '/' && !isInputFocused) {
+        e.preventDefault();
+        search.focus();
+        search.select();
+      } else if (e.key === 'Escape') {
+        if (isInputFocused) {
+          search.value = '';
+          search.blur();
+          filterCards();
+        }
+      } else if (!isInputFocused) {
+        if (e.key === '1' || e.key === 's') {
+          e.preventDefault();
+          document.getElementById('win-server').scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('ws1').classList.add('active');
+          document.getElementById('ws2').classList.remove('active');
+        } else if (e.key === '2' || e.key === 'p') {
+          e.preventDefault();
+          document.getElementById('win-projects').scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('ws2').classList.add('active');
+          document.getElementById('ws1').classList.remove('active');
+        } else if (e.key === 'c') {
+          copyAddress('mc.bigbois.live', 'keyJava');
+        } else if (e.key === 'b') {
+          copyAddress('mcb.bigbois.live:19132', 'keyBedrock');
+        } else if (e.key === 'g') {
+          window.open('https://github.com/Acidburn0x90', '_blank', 'noopener,noreferrer');
+        }
+      }
+    });
+
+    // Server Telemetry
+    async function pollTelemetry() {
       const badge = document.getElementById('statusBadge');
       const statusText = document.getElementById('statusText');
       const players = document.getElementById('playerCount');
@@ -234,9 +286,9 @@
         let data = res.ok ? await res.json() : null;
 
         if (!data || !data.online) {
-          const bedrockRes = await fetch('https://api.mcstatus.io/v2/status/bedrock/mcb.bigbois.live:19132');
-          if (bedrockRes.ok) {
-            const bData = await bedrockRes.json();
+          const bRes = await fetch('https://api.mcstatus.io/v2/status/bedrock/mcb.bigbois.live:19132');
+          if (bRes.ok) {
+            const bData = await bRes.json();
             if (bData.online) data = bData;
           }
         }
@@ -256,25 +308,25 @@
         }
 
         if (data && data.online) {
-          badge.className = 'status-chip online';
-          statusText.textContent = 'ONLINE';
+          badge.className = 'module-pill online';
+          statusText.textContent = `MC: ONLINE (${data.players?.online ?? 0}/${data.players?.max ?? 20})`;
           players.textContent = `${data.players?.online ?? 0} / ${data.players?.max ?? '20'}`;
           version.textContent = data.version?.name_clean || data.version?.name || 'Paper 1.21.x';
         } else {
-          badge.className = 'status-chip offline';
-          statusText.textContent = 'OFFLINE';
+          badge.className = 'module-pill offline';
+          statusText.textContent = 'MC: OFFLINE';
           players.textContent = '0 / --';
         }
       } catch (err) {
-        badge.className = 'status-chip offline';
-        statusText.textContent = 'UNAVAILABLE';
+        badge.className = 'module-pill offline';
+        statusText.textContent = 'MC: UNAVAIL';
       }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       renderCards(window.PROJECTS || []);
-      pollServer();
-      setInterval(pollServer, 30000);
+      pollTelemetry();
+      setInterval(pollTelemetry, 30000);
     });
   </script>
 </body>

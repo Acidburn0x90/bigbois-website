@@ -40,3 +40,8 @@ All directory items are managed inside `projects.js`. To add a new project, appe
 ```
 
 The application automatically renders the card, updates project counts, and enables search and category filtering.
+
+## Living UI Design Standard (`DESIGN.md`)
+
+The user's default design style is the **Charcoal Monotone Skeletal UI**. Full design tokens, component patterns, and typography rules are documented in [`DESIGN.md`](file:///home/acidburn0x90/Documents/code/bigbois-website/DESIGN.md) and globally synced in `~/.agents/rules/ui_design_system.md`. Any future visual modifications must adhere to and update these living specifications.
+

@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap');
 
 :root {
-  --bg: #0c0c0e;
-  --surface: #141417;
-  --surface-card: #18181c;
-  --surface-card-hover: #1f1f24;
-  --surface-input: #111114;
-  --border: #27272c;
-  --border-hover: #3e3e46;
-  --border-subtle: #1e1e22;
+  --bg: #0b0b0d;
+  --surface: #131316;
+  --surface-tile: #16161a;
+  --surface-tile-hover: #1c1c21;
+  --surface-input: #0f0f12;
+  --border: #26262b;
+  --border-focus: #4a4a55;
+  --border-subtle: #1c1c20;
+  --halo-glow: rgba(255, 255, 255, 0.05);
   --text-primary: #f4f4f5;
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
@@ -32,238 +33,239 @@ body {
   font-size: 13px;
   line-height: 1.5;
   min-height: 100vh;
-  padding: 32px 16px 80px;
+  padding: 16px 16px 64px;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Skeleton Layout Shell */
-.site-wrapper {
-  max-width: 920px;
+.wm-desktop {
+  max-width: 980px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-/* Minimalist Charcoal Header Bar */
-.skeletal-bar {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 16px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.brand-identity {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.brand-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--text-secondary);
-  border-radius: 50%;
-}
-
-.brand-title {
-  font-family: var(--font-pixel);
-  font-size: 14px;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-}
-
-.brand-sub {
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-.nav-group {
-  display: flex;
-  gap: 8px;
-}
-
-.nav-btn {
-  font-size: 11px;
-  color: var(--text-secondary);
-  text-decoration: none;
-  border: 1px solid var(--border);
-  padding: 4px 10px;
-  border-radius: 4px;
-  background: var(--surface-card);
-  transition: all 0.15s ease;
-}
-
-.nav-btn:hover {
-  border-color: var(--border-hover);
-  color: var(--text-primary);
-  background: var(--surface-card-hover);
-}
-
-/* Skeletal Disclaimer Banner */
-.skeletal-disclaimer {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--text-muted);
-  border-radius: 4px;
-  padding: 10px 14px;
-  font-size: 12px;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.disclaimer-label {
-  font-family: var(--font-pixel);
-  font-size: 10px;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  flex-shrink: 0;
-}
-
-/* Section Shell */
-.section-shell {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 4px;
-}
-
-.section-tag {
-  font-family: var(--font-pixel);
-  font-size: 11px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.section-meta {
-  font-size: 11px;
-  color: var(--text-dim);
-}
-
-/* Server Widget - Skeletal Panel */
-.skeletal-panel {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.panel-header {
+/* ==========================================================================
+   Waybar-Inspired Top Status Bar
+   ========================================================================== */
+.waybar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
+  font-size: 12px;
 }
 
-.panel-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-primary);
+.waybar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.status-chip {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 4px;
+.workspaces-group {
+  display: flex;
+  gap: 4px;
+}
+
+.ws-pill {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 2px;
   border: 1px solid var(--border);
-  background: var(--surface-card);
+  background: var(--surface-tile);
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ws-pill:hover,
+.ws-pill.active {
+  color: var(--text-primary);
+  border-color: var(--border-focus);
+  background: var(--surface-tile-hover);
+}
+
+.waybar-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  border-left: 1px solid var(--border);
+  padding-left: 8px;
+}
+
+.waybar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.module-pill {
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: var(--surface-tile);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 2px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--text-muted);
 }
 
-.status-chip.online {
+.module-pill a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.module-pill a:hover {
   color: var(--text-primary);
-  border-color: rgba(34, 197, 94, 0.4);
 }
 
-.chip-dot {
+.status-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--text-dim);
 }
 
-.online .chip-dot {
+.online .status-dot {
   background: var(--status-green);
   box-shadow: 0 0 6px var(--status-green);
 }
 
-.offline .chip-dot {
+.offline .status-dot {
   background: var(--status-red);
 }
 
-/* Skeletal Grid Metrics */
-.skeletal-grid-4 {
+/* ==========================================================================
+   Tiling Window Frames (0-Gap / Hyprland Aesthetic)
+   ========================================================================== */
+.tile-window {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tile-window:focus-within,
+.tile-window:hover {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 10px var(--halo-glow);
+}
+
+.tile-bar {
+  background: #0f0f12;
+  border-bottom: 1px solid var(--border);
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.tile-title {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tile-tag {
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.tile-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Disclaimer Callout */
+.wm-disclaimer {
+  background: var(--surface-tile);
+  border-left: 2px solid var(--text-muted);
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.disclaimer-badge {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Server Telemetry Grid
+   ========================================================================== */
+.metric-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 
 @media (max-width: 680px) {
-  .skeletal-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .metric-row { grid-template-columns: repeat(2, 1fr); }
 }
 
-.metric-cell {
-  background: var(--surface-card);
+.metric-box {
+  background: var(--surface-tile);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 8px 12px;
+  border-radius: 2px;
+  padding: 8px 10px;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.metric-label {
+.metric-lbl {
   font-size: 10px;
   color: var(--text-dim);
   text-transform: uppercase;
   font-weight: 600;
 }
 
-.metric-value {
+.metric-val {
   font-size: 13px;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-/* Endpoint Click Boxes */
-.endpoint-row {
+/* Endpoint Click Cards */
+.endpoints-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 8px;
 }
 
 @media (max-width: 600px) {
-  .endpoint-row { grid-template-columns: 1fr; }
+  .endpoints-grid { grid-template-columns: 1fr; }
 }
 
-.endpoint-card {
-  background: var(--surface-card);
+.endpoint-action {
+  background: var(--surface-tile);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 10px 14px;
+  border-radius: 2px;
+  padding: 10px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -271,247 +273,267 @@ body {
   transition: all 0.15s ease;
 }
 
-.endpoint-card:hover {
-  border-color: var(--border-hover);
-  background: var(--surface-card-hover);
+.endpoint-action:hover {
+  border-color: var(--border-focus);
+  background: var(--surface-tile-hover);
 }
 
-.endpoint-sub {
+.endpoint-name {
   font-size: 10px;
   color: var(--text-dim);
   text-transform: uppercase;
   display: block;
 }
 
-.endpoint-text {
+.endpoint-value {
   font-size: 13px;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.copy-pill {
-  font-size: 10px;
+.key-badge {
+  font-family: var(--font-pixel);
+  font-size: 9px;
   color: var(--text-muted);
   border: 1px solid var(--border);
   padding: 2px 6px;
-  border-radius: 3px;
+  border-radius: 2px;
   background: var(--surface);
 }
 
-/* Accordion Details */
-.skeletal-details {
-  border-top: 1px solid var(--border);
-  padding-top: 12px;
+/* Accordion */
+.wm-accordion {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 10px;
   font-size: 12px;
   color: var(--text-secondary);
 }
 
-.skeletal-details summary {
+.wm-accordion summary {
   cursor: pointer;
   color: var(--text-muted);
   user-select: none;
-  outline: none;
+  font-size: 11px;
 }
 
-.skeletal-details summary:hover {
+.wm-accordion summary:hover {
   color: var(--text-primary);
 }
 
-.skeletal-details ul {
-  margin-top: 8px;
-  padding-left: 20px;
+.wm-accordion ul {
+  margin-top: 6px;
+  padding-left: 18px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
-.skeletal-details code {
+.wm-accordion code {
   color: var(--text-primary);
-  background: var(--surface-card);
-  padding: 1px 5px;
-  border-radius: 3px;
+  background: var(--surface-tile);
+  padding: 1px 4px;
   border: 1px solid var(--border);
+  border-radius: 2px;
 }
 
-/* Search & Filter Controls */
-.controls-bar {
+/* ==========================================================================
+   Directory Controls
+   ========================================================================== */
+.controls-strip {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
-.skeletal-search {
+.search-field {
   width: 100%;
-  background: var(--surface);
+  background: var(--surface-input);
   border: 1px solid var(--border);
   color: var(--text-primary);
   font-family: var(--font-mono);
   font-size: 12px;
   padding: 8px 12px;
-  border-radius: 4px;
+  border-radius: 2px;
   outline: none;
   transition: border-color 0.15s;
 }
 
-.skeletal-search:focus {
-  border-color: var(--border-hover);
+.search-field:focus {
+  border-color: var(--border-focus);
 }
 
-.tab-list {
+.filter-strip {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
 }
 
-.tab-btn {
-  background: var(--surface);
+.filter-pill {
+  background: var(--surface-tile);
   border: 1px solid var(--border);
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: 11px;
-  padding: 4px 10px;
-  border-radius: 4px;
+  padding: 3px 8px;
+  border-radius: 2px;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
-.tab-btn:hover {
+.filter-pill:hover {
   color: var(--text-primary);
-  border-color: var(--border-hover);
+  border-color: var(--border-focus);
 }
 
-.tab-btn.active {
-  background: var(--surface-card-hover);
+.filter-pill.active {
+  background: var(--surface-tile-hover);
   color: var(--text-primary);
   border-color: var(--text-muted);
 }
 
-/* Skeletal Project Cards Grid (2 columns on desktop) */
-.cards-grid {
+/* ==========================================================================
+   Project Cards (Skeletal 2-Column Tiling)
+   ========================================================================== */
+.cards-tiling {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-@media (max-width: 680px) {
-  .cards-grid { grid-template-columns: 1fr; }
-}
-
-.card-frame {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
-  transition: border-color 0.15s ease, background 0.15s ease;
-}
-
-.card-frame:hover {
-  border-color: var(--border-hover);
-  background: var(--surface-card);
-}
-
-.card-headline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 8px;
 }
 
-.card-name {
+@media (max-width: 680px) {
+  .cards-tiling { grid-template-columns: 1fr; }
+}
+
+.project-card {
+  background: var(--surface-tile);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.project-card:hover {
+  border-color: var(--border-focus);
+  background: var(--surface-tile-hover);
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-heading {
   font-size: 13px;
   font-weight: 700;
   color: var(--text-primary);
 }
 
-.card-category-badge {
-  font-size: 10px;
+.card-type {
+  font-size: 9px;
+  font-family: var(--font-pixel);
   color: var(--text-muted);
   border: 1px solid var(--border);
-  padding: 1px 6px;
-  border-radius: 3px;
-  background: var(--surface-card);
+  padding: 1px 5px;
+  border-radius: 2px;
+  background: var(--surface);
   text-transform: uppercase;
 }
 
-.card-summary {
+.card-desc {
   font-size: 12px;
   color: var(--text-secondary);
   line-height: 1.45;
 }
 
-.card-foot {
+.card-bottom-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  padding-top: 8px;
+  padding-top: 6px;
   border-top: 1px solid var(--border-subtle);
 }
 
-.chip-group {
+.tag-cloud {
   display: flex;
   gap: 4px;
   flex-wrap: wrap;
 }
 
-.chip {
+.tag-chip {
   font-size: 10px;
-  color: var(--text-muted);
+  color: var(--text-dim);
   background: var(--surface-input);
   border: 1px solid var(--border-subtle);
   padding: 1px 5px;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
-.card-action-btn {
+.card-btn {
   font-size: 11px;
   color: var(--text-primary);
   text-decoration: none;
   border: 1px solid var(--border);
-  padding: 3px 8px;
-  border-radius: 3px;
-  background: var(--surface-card);
+  padding: 2px 7px;
+  border-radius: 2px;
+  background: var(--surface);
   transition: all 0.15s ease;
   white-space: nowrap;
 }
 
-.card-action-btn:hover {
-  border-color: var(--border-hover);
-  background: var(--surface-card-hover);
+.card-btn:hover {
+  border-color: var(--border-focus);
+  color: #fff;
 }
 
-/* Empty State */
-.empty-box {
+/* Empty Notice */
+.empty-notice {
   grid-column: 1 / -1;
   text-align: center;
-  padding: 32px 16px;
-  background: var(--surface);
+  padding: 28px 16px;
+  background: var(--surface-tile);
   border: 1px dashed var(--border);
-  border-radius: 6px;
+  border-radius: 2px;
   color: var(--text-muted);
   font-size: 12px;
 }
 
-/* Footer */
-.skeletal-footer {
-  border-top: 1px solid var(--border);
-  padding-top: 16px;
+/* ==========================================================================
+   Waybar Bottom Quick-Binds Bar
+   ========================================================================== */
+.waybar-bottom {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
   font-size: 11px;
   color: var(--text-dim);
 }
 
-.skeletal-footer a {
-  color: var(--text-muted);
-  text-decoration: none;
+.binds-hints {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.skeletal-footer a:hover {
-  color: var(--text-primary);
+.bind-item kbd {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: 1px 4px;
+  border-radius: 2px;
+  background: var(--surface-tile);
+  margin-right: 4px;
 }
