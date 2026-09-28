@@ -26,7 +26,7 @@ const PROJECTS = [
     description: "Interactive visualizer, bit-by-bit header & trailer inspector, packet encapsulation pipeline, routing architecture, and CSCI 250 study guide.",
     tags: ["Networking", "TCP/IP", "Headers", "CSCI 250"],
     links: [
-      { label: "Launch Visualizer", url: "./osi/" },
+      { label: "Launch Visualizer", url: "./osi/index.html" },
       { label: "PDF Guide", url: "./osi/OSI_Layers_1-4_Complete_Guide.pdf" }
     ]
   },
