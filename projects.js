@@ -19,15 +19,16 @@ const PROJECTS = [
   },
   {
     id: "osi-interactive-suite",
-    title: "OSI Layers 1–4 Protocol Suite",
+    title: "OSI 7-Layer Interactive Protocol Suite",
     category: "security",
     categoryLabel: "Networking",
     icon: "🌐",
-    description: "Interactive visualizer, bit-by-bit header & trailer inspector, packet encapsulation pipeline, routing architecture, and CSCI 250 study guide.",
-    tags: ["Networking", "TCP/IP", "Headers", "CSCI 250"],
+    description: "Comprehensive 7-layer interactive network lab, on-wire frame anatomy visualizer, bitfield header/trailer inspector, TCP handshake simulator, VLSM subnetting calculators, and CSCI 250 exam assessment.",
+    tags: ["Networking", "OSI Model", "TCP/IP", "Wire Anatomy", "CSCI 250"],
     links: [
-      { label: "Launch Visualizer", url: "./osi/index.html" },
-      { label: "PDF Guide", url: "./osi/OSI_Layers_1-4_Complete_Guide.pdf" }
+      { label: "Live Suite ↗", url: "https://acidburn0x90.github.io/osi-interactive-suite/" },
+      { label: "PDF Guide", url: "https://acidburn0x90.github.io/osi-interactive-suite/OSI_Complete_7_Layer_Guide.pdf" },
+      { label: "Repo", url: "https://github.com/Acidburn0x90/osi-interactive-suite" }
     ]
   },
   {
