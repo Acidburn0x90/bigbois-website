@@ -18,6 +18,19 @@ const PROJECTS = [
     ]
   },
   {
+    id: "osi-interactive-suite",
+    title: "OSI Layers 1–4 Protocol Suite",
+    category: "security",
+    categoryLabel: "Networking",
+    icon: "🌐",
+    description: "Interactive visualizer, bit-by-bit header & trailer inspector, packet encapsulation pipeline, routing architecture, and CSCI 250 study guide.",
+    tags: ["Networking", "TCP/IP", "Headers", "CSCI 250"],
+    links: [
+      { label: "Launch Visualizer", url: "./osi/" },
+      { label: "PDF Guide", url: "./osi/OSI_Layers_1-4_Complete_Guide.pdf" }
+    ]
+  },
+  {
     id: "echos-of-sylvaris",
     title: "Echos of Sylvaris",
     category: "systems",
