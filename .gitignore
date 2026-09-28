@@ -83,3 +83,5 @@ out/
 # -------------------------------
 graphify-out/
 .system_generated/
+screenshot_*.png
+osi/screenshot_*.png
