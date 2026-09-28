@@ -45,3 +45,10 @@ The application automatically renders the card, updates project counts, and enab
 
 The user's default design style is the **Charcoal Monotone Skeletal UI**. Full design tokens, component patterns, and typography rules are documented in [`DESIGN.md`](file:///home/acidburn0x90/Documents/code/bigbois-website/DESIGN.md) and globally synced in `~/.agents/rules/ui_design_system.md`. Any future visual modifications must adhere to and update these living specifications.
 
+## Security & Path Hygiene Guidelines
+
+* **Explicit Target Links (Zero Local Directory Browsing):** Never use bare directory paths (`../`, `./dir/`) in web frontends or links. Always target concrete filenames (`../index.html`, `./dir/index.html`) so browsers do not trigger filesystem directory indexing (`Index of /home/...`) and recursive parent folder navigation under local `file://` schemes. Never emit bare directory `file:///` URLs in documentation or assistant responses.
+* **Strict DOM Input Sanitization:** Never interpolate user inputs or query parameters directly into `.innerHTML` without 5-character HTML entity escaping (`&`, `<`, `>`, `"`, `'`).
+* **Reverse Tabnabbing Prevention:** All external links opening in a new tab (`target="_blank"`) must include `rel="noopener noreferrer"`.
+* **Zero PII or Institutional Leaks:** Never hardcode real-world educational institutions, work domains, or user-identifying network suffixes into mock outputs or fixtures; strictly enforce standard RFC mock values (`lab.csci250.internal`, `example.com`, `192.0.2.0/24`).
+
