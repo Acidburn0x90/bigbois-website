@@ -624,10 +624,10 @@ body {
             <span id="keyJava" class="key-badge">KEY: C</span>
           </div>
 
-          <div class="endpoint-action" onclick="copyAddress('mcb.bigbois.live:19132', 'keyBedrock')" title="Copy Bedrock address [Press b]">
+          <div class="endpoint-action" onclick="copyAddress('mc.bigbois.live:19132', 'keyBedrock')" title="Copy Bedrock address [Press b]">
             <div>
               <span class="endpoint-name">Bedrock Edition (Mobile / Win10 / Consoles)</span>
-              <span class="endpoint-value">mcb.bigbois.live:19132</span>
+              <span class="endpoint-value">mc.bigbois.live:19132</span>
             </div>
             <span id="keyBedrock" class="key-badge">KEY: B</span>
           </div>
@@ -638,7 +638,7 @@ body {
           <summary>Console & Direct Connection Notes</summary>
           <ul>
             <li><strong>Java:</strong> Multiplayer → Add Server → <code>mc.bigbois.live</code> (SRV record routes to port 58141).</li>
-            <li><strong>Bedrock:</strong> Play → Servers → Add Server → Address: <code>mcb.bigbois.live</code> | Port: <code>19132</code>.</li>
+            <li><strong>Bedrock:</strong> Play → Servers → Add Server → Address: <code>mc.bigbois.live</code> | Port: <code>19132</code>.</li>
             <li><strong>Consoles:</strong> Use <em>BedrockTogether</em> mobile companion app on local Wi-Fi to join third-party servers.</li>
           </ul>
         </details>
@@ -810,7 +810,7 @@ body {
         } else if (e.key === 'c') {
           copyAddress('mc.bigbois.live', 'keyJava');
         } else if (e.key === 'b') {
-          copyAddress('mcb.bigbois.live:19132', 'keyBedrock');
+          copyAddress('mc.bigbois.live:19132', 'keyBedrock');
         } else if (e.key === 'g') {
           window.open('https://github.com/Acidburn0x90', '_blank', 'noopener,noreferrer');
         }
@@ -829,7 +829,7 @@ body {
         let data = res.ok ? await res.json() : null;
 
         if (!data || !data.online) {
-          const bRes = await fetch('https://api.mcstatus.io/v2/status/bedrock/mcb.bigbois.live:19132');
+          const bRes = await fetch('https://api.mcstatus.io/v2/status/bedrock/mc.bigbois.live:19132');
           if (bRes.ok) {
             const bData = await bRes.json();
             if (bData.online) data = bData;
