@@ -822,6 +822,9 @@ body {
           copyAddress('mc.bigbois.live:19132', 'keyBedrock');
         } else if (e.key === 'g') {
           window.open('https://github.com/Acidburn0x90', '_blank', 'noopener,noreferrer');
+        } else if (e.key === 'V' && e.shiftKey) {
+          e.preventDefault();
+          window.location.href = 'vault/index.html';
         }
       }
     });

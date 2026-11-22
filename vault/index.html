@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none';">
+  <title>acidburn0x90 // starlit-vault</title>
+  <link rel="stylesheet" href="./vault.css">
+</head>
+<body>
+  <div class="wm-desktop">
+    <!-- Top Waybar -->
+    <header class="waybar">
+      <div class="waybar-left">
+        <div class="workspaces-group" id="wsGroup">
+          <button type="button" class="ws-pill active" data-ws="flow">1:flow</button>
+          <button type="button" class="ws-pill" data-ws="timeline">2:timeline</button>
+          <button type="button" class="ws-pill" data-ws="projects">3:projects</button>
+          <button type="button" class="ws-pill" data-ws="commands">4:commands</button>
+          <button type="button" class="ws-pill" data-ws="prefs">5:prefs</button>
+          <button type="button" class="ws-pill" data-ws="ideas">6:ideas</button>
+        </div>
+        <span class="waybar-title" id="waybarHost">starlit-vault // locked</span>
+      </div>
+      <div class="waybar-right">
+        <span class="module-pill">
+          <span class="status-dot locked" id="vaultDot"></span>
+          <span id="vaultStateText">AES-256-GCM LOCKED</span>
+        </span>
+        <span class="module-pill hidden" id="autoLockPill">AUTO-LOCK 15:00</span>
+        <button type="button" class="module-pill hidden" id="lockBtn">LOCK [l]</button>
+        <a href="../index.html" class="module-pill">HOME [h]</a>
+      </div>
+    </header>
+
+    <!-- Locked Gate Screen -->
+    <main id="lockScreen" class="lock-wrapper">
+      <section class="tile-window">
+        <div class="tile-bar">
+          <span>gpg-agent // starlit-vault.enc</span>
+          <span class="tile-tag">ZERO-KNOWLEDGE</span>
+        </div>
+        <div class="tile-body">
+          <div class="lock-meta">
+            <div class="metric-cell">
+              <div class="metric-label">Stage 1 KDF (RAM-Hard)</div>
+              <div class="metric-value">scrypt N=32768 (32 MiB)</div>
+            </div>
+            <div class="metric-cell">
+              <div class="metric-label">Stage 2 KDF (CPU-Hard)</div>
+              <div class="metric-value">PBKDF2-SHA256 (600,000)</div>
+            </div>
+            <div class="metric-cell">
+              <div class="metric-label">Combiner &amp; Cipher</div>
+              <div class="metric-value">HKDF + AES-256-GCM</div>
+            </div>
+            <div class="metric-cell">
+              <div class="metric-label">Storage Policy</div>
+              <div class="metric-value">Volatile RAM Only</div>
+            </div>
+          </div>
+
+          <form id="unlockForm" class="lock-form" autocomplete="off">
+            <div class="input-row">
+              <input
+                type="password"
+                id="passphraseInput"
+                class="vault-input"
+                placeholder="Enter Vaultwarden passphrase..."
+                autocomplete="current-password"
+                spellcheck="false"
+                required
+              >
+              <button type="button" id="togglePwBtn" class="btn">SHOW</button>
+              <button type="submit" id="unlockBtn" class="btn">DECRYPT</button>
+            </div>
+            <div id="kdfStatus" class="kdf-status">Waiting for passphrase...</div>
+            <div id="errorBox" class="error-box hidden"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Unlocked Workspace Container (Populated in volatile memory only) -->
+    <main id="vaultApp" class="wm-desktop hidden">
+      <div class="metrics-row" id="metricsRow"></div>
+
+      <div class="toolbar-row">
+        <input
+          type="search"
+          id="globalSearch"
+          class="vault-input"
+          placeholder="Press / to filter active workspace or search across projects, commands, changes, prefs..."
+          autocomplete="off"
+          spellcheck="false"
+        >
+      </div>
+
+      <section id="panel-flow" class="wm-desktop"></section>
+      <section id="panel-timeline" class="wm-desktop hidden"></section>
+      <section id="panel-projects" class="wm-desktop hidden"></section>
+      <section id="panel-commands" class="wm-desktop hidden"></section>
+      <section id="panel-prefs" class="wm-desktop hidden"></section>
+      <section id="panel-ideas" class="wm-desktop hidden"></section>
+    </main>
+  </div>
+
+  <footer class="keybind-bar">
+    <span><kbd>/</kbd>search</span>
+    <span><kbd>1-6</kbd>workspace</span>
+    <span><kbd>Esc</kbd>clear</span>
+    <span><kbd>l</kbd>lock vault</span>
+    <span><kbd>h</kbd>public home</span>
+  </footer>
+
+  <script src="./crypto.js" defer></script>
+  <script src="./vault.js" defer></script>
+</body>
+</html>

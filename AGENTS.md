@@ -16,9 +16,10 @@ Central personal tech home portal, live infrastructure status page, and project 
 
 ## Component Layout
 
-1. **`index.html`**: Semantic, accessible shell containing the header, featured live infrastructure widget, and search/filter controls.
+1. **`index.html`**: Semantic, accessible shell containing the header, featured live infrastructure widget, and search/filter controls (plus hidden `Shift+V` shortcut to `vault/index.html`).
 2. **`style.css`**: Modern Arch/Hyprland dark theme CSS stylesheet.
 3. **`projects.js`**: Data store for all projects and directory items. Zero frontend knowledge needed to add or modify items.
+4. **`vault/` (`index.html`, `vault.css`, `crypto.js`, `vault.js`, `vault.enc.json`)**: Unlisted (`robots.txt` disallowed + `noindex`), zero-knowledge client-side encrypted private atlas and architecture flow viewer (`scrypt` `N=32768,r=8,p=1` + `PBKDF2-HMAC-SHA256` `600,000` -> `HKDF-SHA256` -> `AES-256-GCM`). Rebuild ciphertext anytime via `~/.local/bin/vault-build`; plaintext never touches this repository.
 
 ## How to Add or Modify Projects (Zero Frontend Knowledge)
 
